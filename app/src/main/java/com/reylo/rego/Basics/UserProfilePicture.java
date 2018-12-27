@@ -10,6 +10,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -220,6 +221,28 @@ public class UserProfilePicture extends AppCompatActivity implements View.OnClic
             });
 
         }
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode== KeyEvent.KEYCODE_BACK) {
+
+            logOut();
+
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    //log out the user and return to login activity
+    private void logOut(){
+
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
 
     }
 

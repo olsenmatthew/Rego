@@ -15,6 +15,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -33,6 +34,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.reylo.rego.Basics.LoginActivity;
+import com.reylo.rego.Main.ActivityTabbedMain;
 import com.reylo.rego.R;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
@@ -1111,6 +1113,19 @@ public class EditInfoActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode== KeyEvent.KEYCODE_BACK) {
+
+            Intent intent = new Intent(this, ActivityTabbedMain.class);
+            finish();
+            startActivity(intent);
+
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 }

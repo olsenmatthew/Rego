@@ -3,6 +3,7 @@ package com.reylo.rego.Basics;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -125,6 +126,28 @@ public class UserFirstName extends AppCompatActivity implements View.OnClickList
             }
 
         }
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode== KeyEvent.KEYCODE_BACK) {
+
+            logOut();
+
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    //log out the user and return to login activity
+    private void logOut(){
+
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
 
     }
 

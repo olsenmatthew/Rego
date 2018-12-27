@@ -70,9 +70,9 @@ public class ActivityTabbedMain extends AppCompatActivity {
     private DatabaseReference databaseReference;
 
     // declare tab items
-    TabItem tabItemMultiLocation;
-    TabItem tabItemChatBubble;
-    TabItem tabItemProfile;
+    private TabItem tabItemMultiLocation;
+    private TabItem tabItemChatBubble;
+    private TabItem tabItemProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

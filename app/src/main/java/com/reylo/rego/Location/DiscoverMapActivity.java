@@ -47,6 +47,7 @@ import com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 import com.reylo.rego.Basics.UserFirstNameInfo;
 import com.reylo.rego.Common.Common;
+import com.reylo.rego.Main.ActivityTabbedMainFeed;
 import com.reylo.rego.Utils.Calculations;
 import com.reylo.rego.Main.ActivityTabbedMain;
 import com.reylo.rego.R;
@@ -54,6 +55,7 @@ import com.reylo.rego.SwipeCards.arrayAdapter;
 import com.reylo.rego.SwipeCards.cards;
 
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -1183,7 +1185,7 @@ public class DiscoverMapActivity extends FragmentActivity implements OnMapReadyC
     }
 
     // hide the swipe cares and the corresponding buttons when called
-    public void makeSwipeViewInvisible(){
+    public void makeSwipeViewInvisible() {
 
         backgroundRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1198,6 +1200,22 @@ public class DiscoverMapActivity extends FragmentActivity implements OnMapReadyC
                 loadAllOtherPersons();
             }
         });
+
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode==KeyEvent.KEYCODE_BACK) {
+
+            Intent intent = new Intent(this, ActivityTabbedMain.class);
+            finish();
+            startActivity(intent);
+
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
 
 }
