@@ -1,0 +1,101 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.reylo.rego"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.google.firebase:firebase-database:12.0.1'
+    implementation 'com.google.firebase:firebase-storage:12.0.1'
+    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.google.android.gms:play-services-maps:12.0.1'
+    implementation 'com.android.support:support-vector-drawable:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'com.google.firebase:firebase-auth:12.0.1'
+
+    //updating media router to keep all libraries on same version
+    implementation 'com.android.support:mediarouter-v7:26.1.0'
+
+    //picasso library
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    //Cropping library
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.5.+'
+
+    //Simplifying communications between Activities, Fragments, Threads, Services, etc.
+    // Less code, better quality
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    //Google Location API
+    implementation 'com.google.android.gms:play-services-location:12.0.1'
+    implementation 'com.android.support:support-v4:26.1.0'
+
+    //Google Maps API
+    implementation 'com.google.android.gms:play-services-maps:12.0.1'
+
+    //seek bar for maps, delete later if desired
+    implementation 'com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:0.7.2'
+
+    //Swipe cards Library
+    implementation 'com.lorentzos.swipecards:library:1.0.9@aar'
+    implementation 'com.android.support:cardview-v7:26.1.0'
+
+    //geofire library for location and firebase
+    implementation 'com.firebase:geofire-android:2.3.0'
+
+    //Glide Library
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+    //Giphy Library
+    implementation ('com.giphy.sdk:core:1.0.2@aar') {
+        transitive=true
+    }
+
+    //Emoticons Library
+    implementation 'com.github.hani-momanii:SuperNova-Emoji:1.1'
+
+    //for rounding image views / modifying their radius
+   implementation 'com.makeramen:roundedimageview:2.3.0'
+
+
+    //ExoMedia - improved exoplayer for video streaming
+    implementation 'com.devbrackets.android:exomedia:4.0.3'
+
+    //For dealing with radio buttons
+    implementation 'com.github.ceryle:RadioRealButton:v2.1.1'
+
+    //Range bar / dual seek bar
+    implementation 'com.edmodo:rangebar:1.0.0'
+
+    //Google Places API
+    implementation 'com.google.android.gms:play-services-places:12.0.1'
+
+
+}
+
+//Firebase said to add this
+// Add to the bottom of the file
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.android.application'

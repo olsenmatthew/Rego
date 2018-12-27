@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:focusableInTouchMode="true">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/edit_info_tool_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        </android.support.design.widget.AppBarLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/edit_info_profile_photo_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_left_padding_invisible"
+                    android:layout_width="25dp"
+                    android:layout_height="0dp"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/edit_info_profile_picture_four"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_border_color="@color/colorPrimary"
+                    app:riv_border_width="2dp"
+                    app:riv_corner_radius="4dp" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_right_padding_invisible"
+                    android:layout_width="25dp"
+                    android:layout_height="0dp"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/edit_info_profile_picture_four"
+                    app:layout_constraintStart_toEndOf="@+id/edit_info_profile_picture_three"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_border_color="@color/colorPrimary"
+                    app:riv_border_width="2dp"
+                    app:riv_corner_radius="4dp" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_mid_left_padding_invisible"
+                    android:layout_width="25dp"
+                    android:layout_height="0dp"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/edit_info_profile_picture_four"
+                    app:layout_constraintStart_toEndOf="@+id/edit_info_profile_picture_one"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:riv_border_color="@color/colorPrimary"
+                    app:riv_border_width="2dp"
+                    app:riv_corner_radius="4dp" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_mid_right_padding_invisible"
+                    android:layout_width="25dp"
+                    android:layout_height="0dp"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/edit_info_profile_picture_four"
+                    app:layout_constraintStart_toEndOf="@+id/edit_info_profile_picture_two"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:riv_border_color="@color/colorPrimary"
+                    app:riv_border_width="2dp"
+                    app:riv_corner_radius="4dp" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_mid_horizontal_padding_invisible"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_info_profile_picture_two"
+                    app:riv_border_color="@color/colorPrimary"
+                    app:riv_border_width="2dp"
+                    app:riv_corner_radius="4dp" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_top_horizontal_padding_invisible"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_border_color="@color/colorPrimary"
+                    app:riv_border_width="2dp"
+                    app:riv_corner_radius="4dp" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_one"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintStart_toEndOf="@+id/edit_info_profile_picture_left_padding_invisible"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_info_profile_picture_top_horizontal_padding_invisible"
+                    app:riv_border_color="@color/colorPrimary"
+                    app:riv_border_width="2dp"
+                    app:riv_corner_radius="4dp"
+                    android:src="@drawable/gray_background"/>
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_one_add_button"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="6dp"
+                    android:src="@drawable/icon_x_white_encircled"
+                    app:layout_constraintBottom_toBottomOf="@+id/edit_info_profile_picture_one"
+                    app:layout_constraintEnd_toStartOf="@+id/edit_info_profile_picture_mid_left_padding_invisible"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/edit_info_profile_picture_one"
+                    app:layout_constraintTop_toTopOf="@+id/edit_info_profile_picture_one"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_two"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintStart_toEndOf="@+id/edit_info_profile_picture_mid_left_padding_invisible"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_info_profile_picture_top_horizontal_padding_invisible"
+                    app:riv_border_color="@color/colorPrimary"
+                    app:riv_border_width="2dp"
+                    app:riv_corner_radius="4dp"
+                    android:src="@drawable/gray_background"/>
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_two_add_button"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="6dp"
+                    android:src="@drawable/icon_x_white_encircled"
+                    app:layout_constraintBottom_toBottomOf="@+id/edit_info_profile_picture_two"
+                    app:layout_constraintEnd_toEndOf="@+id/edit_info_profile_picture_two"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/edit_info_profile_picture_two"
+                    app:layout_constraintTop_toTopOf="@+id/edit_info_profile_picture_two"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_three"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintStart_toEndOf="@+id/edit_info_profile_picture_mid_right_padding_invisible"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_info_profile_picture_top_horizontal_padding_invisible"
+                    app:riv_border_color="@color/colorPrimary"
+                    app:riv_border_width="2dp"
+                    app:riv_corner_radius="4dp"
+                    android:src="@drawable/gray_background"/>
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_three_add_button"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="6dp"
+                    android:src="@drawable/icon_plus_sign_white_encircled"
+                    app:layout_constraintBottom_toBottomOf="@+id/edit_info_profile_picture_three"
+                    app:layout_constraintEnd_toEndOf="@+id/edit_info_profile_picture_three"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/edit_info_profile_picture_three"
+                    app:layout_constraintTop_toTopOf="@+id/edit_info_profile_picture_three"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_four"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintStart_toEndOf="@+id/edit_info_profile_picture_left_padding_invisible"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_info_profile_picture_mid_horizontal_padding_invisible"
+                    app:riv_border_color="@color/colorPrimary"
+                    app:riv_border_width="2dp"
+                    app:riv_corner_radius="4dp"
+                    android:src="@drawable/gray_background"/>
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_four_add_button"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="6dp"
+                    android:src="@drawable/icon_plus_sign_white_encircled"
+                    app:layout_constraintBottom_toBottomOf="@+id/edit_info_profile_picture_four"
+                    app:layout_constraintEnd_toEndOf="@+id/edit_info_profile_picture_four"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/edit_info_profile_picture_four"
+                    app:layout_constraintTop_toTopOf="@+id/edit_info_profile_picture_four"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_five"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/edit_info_profile_picture_four"
+                    app:layout_constraintStart_toEndOf="@+id/edit_info_profile_picture_mid_left_padding_invisible"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_info_profile_picture_mid_horizontal_padding_invisible"
+                    app:riv_border_color="@color/colorPrimary"
+                    app:riv_border_width="2dp"
+                    app:riv_corner_radius="4dp"
+                    android:src="@drawable/gray_background"/>
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_five_add_button"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="6dp"
+                    android:src="@drawable/icon_plus_sign_white_encircled"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/edit_info_profile_picture_five"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/edit_info_profile_picture_five"
+                    app:layout_constraintTop_toTopOf="@+id/edit_info_profile_picture_five"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_six"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/edit_info_profile_picture_four"
+                    app:layout_constraintStart_toEndOf="@+id/edit_info_profile_picture_mid_right_padding_invisible"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_info_profile_picture_mid_horizontal_padding_invisible"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:riv_border_color="@color/colorPrimary"
+                    app:riv_border_width="2dp"
+                    app:riv_corner_radius="4dp"
+                    android:src="@drawable/gray_background"/>
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/edit_info_profile_picture_six_add_button"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="6dp"
+                    android:src="@drawable/icon_plus_sign_white_encircled"
+                    app:layout_constraintBottom_toBottomOf="@+id/edit_info_profile_picture_six"
+                    app:layout_constraintEnd_toEndOf="@+id/edit_info_profile_picture_six"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/edit_info_profile_picture_six"
+                    app:layout_constraintTop_toTopOf="@+id/edit_info_profile_picture_six"
+                    app:layout_constraintVertical_bias="1.0" />
+
+            </android.support.constraint.ConstraintLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5sp"
+            android:paddingLeft="10sp"
+            android:paddingStart="10sp"
+            android:paddingTop="20sp"
+            android:text="Name"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry"
+            />
+
+        <EditText
+            android:id="@+id/edit_info_profile_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/colorBackground"
+            android:hint="My Name is..."
+            android:maxLines="1"
+            android:padding="10sp"
+            android:maxLength="25"
+            android:lines="1"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5sp"
+            android:paddingLeft="10sp"
+            android:paddingStart="10sp"
+            android:paddingTop="20sp"
+            android:text="About You"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/edit_info_profile_about_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/windowBackground"
+            android:hint="About You"
+            android:inputType="textMultiLine"
+            android:maxLines="20"
+            android:maxLength="400"
+            android:padding="10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5sp"
+            android:paddingLeft="10sp"
+            android:paddingStart="10sp"
+            android:paddingTop="20sp"
+            android:text="Job Title"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edit_info_profile_job_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fffafafa"
+            android:hint="My Job is..."
+            android:maxLines="1"
+            android:maxLength="25"
+            android:padding="10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5sp"
+            android:paddingLeft="10sp"
+            android:paddingStart="10sp"
+            android:paddingTop="20sp"
+            android:text="Company"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/edit_info_profile_company"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fffafafa"
+            android:hint="My Company is..."
+            android:maxLength="25"
+            android:padding="10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5sp"
+            android:paddingLeft="10sp"
+            android:paddingStart="10sp"
+            android:paddingTop="20sp"
+            android:text="School"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/edit_info_profile_school"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20sp"
+            android:background="#fffafafa"
+            android:maxLines="1"
+            android:maxLength="25"
+            android:hint="I went to..."
+            android:padding="10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5sp"
+            android:paddingLeft="10sp"
+            android:paddingStart="10sp"
+            android:paddingTop="20sp"
+            android:text="I am"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry" />
+
+        <co.ceryle.radiorealbutton.RadioRealButtonGroup
+            android:id="@+id/edit_info_radio_button_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20sp"
+            app:rrbg_animateDrawables_enter="overshoot"
+            app:rrbg_animateDrawables_enterDuration="500"
+            app:rrbg_animateDrawables_exit="overshoot"
+            app:rrbg_animateDrawables_exitDuration="500"
+            app:rrbg_animateDrawables_scale="1.2"
+            app:rrbg_animateTexts_enter="overshoot"
+            app:rrbg_animateTexts_enterDuration="500"
+            app:rrbg_bottomLineColor="@color/colorPrimary"
+            app:rrbg_buttonsPaddingBottom="20sp"
+            app:rrbg_buttonsPaddingTop="14dp"
+            app:rrbg_dividerColor="@color/colorPrimary"
+            app:rrbg_dividerSize="1px"
+            app:rrbg_selectorAboveOfBottomLine="false"
+            app:rrbg_selectorColor="@color/colorPrimary"
+            app:rrbg_selectorDividerPadding="20sp"
+            app:rrbg_selectorSize="6dp"
+            app:rrbg_selectorTop="false">
+
+            <co.ceryle.radiorealbutton.RadioRealButton
+                android:id="@+id/edit_info_radio_button_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:rrb_drawable="@drawable/ic_male"
+                app:rrb_drawableGravity="top"
+                app:rrb_drawableHeight="40dp"
+                app:rrb_drawableTint="@color/colorPrimary"
+                app:rrb_drawableWidth="40dp"
+                app:rrb_text="Male"
+                app:rrb_textColor="@color/colorPrimary"
+                app:rrb_textSize="12sp" />
+
+            <co.ceryle.radiorealbutton.RadioRealButton
+                android:id="@+id/edit_info_radio_button_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:rrb_drawable="@drawable/ic_female"
+                app:rrb_drawableGravity="top"
+                app:rrb_drawableHeight="40dp"
+                app:rrb_drawableTint="@color/colorPrimary"
+                app:rrb_drawableWidth="40dp"
+                app:rrb_rippleColor="@color/colorPrimary"
+                app:rrb_text="Female"
+                app:rrb_textColor="@color/colorPrimary"
+                app:rrb_textSize="12sp" />
+
+            <co.ceryle.radiorealbutton.RadioRealButton
+                android:id="@+id/edit_info_radio_button_gender_more_options"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:rrb_drawable="@drawable/ic_male_female"
+                app:rrb_drawableGravity="top"
+                app:rrb_drawableHeight="40dp"
+                app:rrb_drawableTint="@color/colorPrimary"
+                app:rrb_drawableWidth="40dp"
+                app:rrb_rippleColor="@color/colorPrimary"
+                app:rrb_text="More"
+                app:rrb_textColor="@color/colorPrimary"
+                app:rrb_textSize="12sp" />
+
+        </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5sp"
+            android:paddingLeft="10sp"
+            android:paddingStart="10sp"
+            android:paddingTop="20sp"
+            android:text="I am"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry" />
+
+        <co.ceryle.radiorealbutton.RadioRealButtonGroup
+            android:id="@+id/edit_info_radio_button_relationship_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:rrbg_animateDrawables_enter="overshoot"
+            app:rrbg_animateDrawables_enterDuration="500"
+            app:rrbg_animateDrawables_exit="overshoot"
+            app:rrbg_animateDrawables_exitDuration="500"
+            app:rrbg_animateDrawables_scale="1.2"
+            app:rrbg_animateTexts_enter="overshoot"
+            app:rrbg_animateTexts_enterDuration="500"
+            app:rrbg_bottomLineColor="@color/colorPrimary"
+            app:rrbg_buttonsPaddingBottom="20sp"
+            app:rrbg_buttonsPaddingTop="14dp"
+            app:rrbg_dividerColor="@color/colorPrimary"
+            app:rrbg_dividerSize="1px"
+            app:rrbg_selectorAboveOfBottomLine="false"
+            app:rrbg_selectorColor="@color/colorPrimary"
+            app:rrbg_selectorDividerPadding="20sp"
+            app:rrbg_selectorSize="6dp"
+            app:rrbg_selectorTop="false">
+
+            <co.ceryle.radiorealbutton.RadioRealButton
+                android:id="@+id/edit_info_radio_button_single"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                app:rrb_text="Single"
+                app:rrb_textColor="@color/colorPrimary"
+                app:rrb_textSize="12sp" />
+
+            <co.ceryle.radiorealbutton.RadioRealButton
+                android:id="@+id/edit_info_radio_button_in_a_relationship"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                app:rrb_rippleColor="@color/colorPrimary"
+                app:rrb_text="In a Relationship"
+                app:rrb_textColor="@color/colorPrimary"
+                app:rrb_textSize="12sp" />
+
+            <co.ceryle.radiorealbutton.RadioRealButton
+                android:id="@+id/edit_info_radio_button_relationship_more_options"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                app:rrb_rippleColor="@color/colorPrimary"
+                app:rrb_text="More"
+                app:rrb_textColor="@color/colorPrimary"
+                app:rrb_textSize="12sp" />
+
+        </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5sp"
+            android:paddingLeft="10sp"
+            android:paddingStart="10sp"
+            android:paddingTop="20sp"
+            android:text="Website"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/edit_info_profile_website"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20sp"
+            android:background="#fffafafa"
+            android:hint="www.example.com"
+            android:padding="10sp"
+            android:maxLines="1"
+            />
+
+    </LinearLayout>
+
+</ScrollView>
+

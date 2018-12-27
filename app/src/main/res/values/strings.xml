@@ -1,0 +1,280 @@
+<resources>
+    <string name="app_name">Rego</string>
+
+    //UserRegistration Activity
+    <string name="user_registration_header_text_view">Create Account</string>
+    <string name="user_registration_email_hint">Email</string>
+    <string name="user_registration_password_hint">Password</string>
+    <string name="user_registration_create_account_button">Create Account</string>
+    <string name="user_registration_sign_in_here_text_view">Already Registered? Sign in here</string>
+
+    //LoginActivity Activity
+    <string name="login_activity_user_login_header_text_view">User Login</string>
+    <string name="login_activity_email_hint">Email</string>
+    <string name="login_activity_password_hint">Password</string>
+    <string name="login_activity_login_button_hint">Login</string>
+    <string name="login_activity_sign_up_here_text_view">Don\'t have an account? Sign up here</string>
+
+    //UserFirstName Activity
+    <string name="user_first_name_header_text_view">My first name is</string>
+    <string name="user_first_name_edit_text">First Name</string>
+    <string name="user_first_name_hint_text">This is how it will appear in Rego</string>
+
+
+    //UserLastName Activity
+    <string name="user_last_name_header_text_view">Enter Your Last Name</string>
+    <string name="user_last_name_edit_text">Last Name</string>
+
+    //UserBirthday Activity
+    <string name="user_birthday_header_text_view">My birthday is</string>
+
+
+    //UserGender Activity
+    <string name="user_gender_header_text_view">I am a</string>
+
+    <string-array name="user_gender_options_spinner">
+        <item name="select_one">Select One</item>
+        <item name="male">Male</item>
+        <item name="female">Female</item>
+        <item name="other">Other</item>
+    </string-array>
+
+    //ProfileActivity Activity
+    <string name="profile_activity_first_name">First Name</string>
+    <string name="profile_activity_last_name">Last Name</string>
+    <string name="profile_activity_birthday_date">Select Your Birthday</string>
+    <string name="profile_activity_save_profile_button">Save Profile</string>
+    <string name="profile_activity_log_out_button">Log Out</string>
+
+    //error messages for Firebase Auth
+    <string name="error_weak_password">Password is too weak</string>
+    <string name="error_invalid_email">Email is invalid</string>
+    <string name="error_user_exists">User already exists</string>
+    <string name="user_birthday_hint_text">Your age will be public</string>
+    <string name="user_profile_picture_header_text_view">My best photo is</string>
+
+    //gender options for user gender activity and fragment
+    <string-array name="more_gender_options">
+
+        <item>Agender</item>
+        <item>Androgyne</item>
+        <item>Androgyny</item>
+        <item>Bigender</item>
+        <item>Cis Female</item>
+        <item>Cis Male</item>
+        <item>Cisgender</item>
+        <item>Demiboy</item>
+        <item>Demigender</item>
+        <item>Demigirl</item>
+        <item>Female to Male</item>
+        <item>Gender Non-Conforming</item>
+        <item>Gender Questioning</item>
+        <item>Gender Variant</item>
+        <item>Genderfluid</item>
+        <item>Genderqueer</item>
+        <item>Intergender</item>
+        <item>Intersex</item>
+        <item>Male to Female</item>
+        <item>Neither</item>
+        <item>Neutrois</item>
+        <item>Non-Binary</item>
+        <item>None Gender</item>
+        <item>Omnigender</item>
+        <item>Pangender</item>
+        <item>Poligender</item>
+        <item>Third Gender</item>
+        <item>Trans Man</item>
+        <item>Trans Person</item>
+        <item>Trans Woman</item>
+        <item>Transgender Man</item>
+        <item>Transgender Woman</item>
+        <item>Transsexual</item>
+        <item>Trigender</item>
+        <item>          </item>
+        <item>Other</item>
+    </string-array>
+
+    //ActivityTabbedMain requesting users permissions pop up
+    <string name="title_location_permission">Allow Rego to access your location even when you are not using the app?</string>
+    <string name="text_location_permission">We will only use your location to find users you have crossed paths with.</string>
+    <string name="positive_button_allow">Allow</string>
+
+    //ActivityTabbedMain
+    <string name="title_activity_main_tabbed">MainTabbedActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_tabbed_main">ActivityTabbedMain</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="title_activity_discover_map">Map</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+    <string name="pref_title_vibrate">Vibrate</string>
+
+    <string name="title_activity_edit_info">EditInfoActivity</string>
+
+    //chat activity
+    <string name="chat_activity_hint_enter_a_message">Type a message...</string>
+    <string name="audio_record_message_title">To use this feature, allow Rego to access your microphone.</string>
+    <string name="camera_permissions_title">To use this feature, allow Rego to access your camera.</string>
+    <!--<string name="large_text">-->
+        <!--&lt;!&ndash;"Material is the metaphor.\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"A material metaphor is the unifying theory of a rationalized space and a system of motion."&ndash;&gt;-->
+        <!--&lt;!&ndash;"The material is grounded in tactile reality, inspired by the study of paper and ink, yet "&ndash;&gt;-->
+        <!--&lt;!&ndash;"technologically advanced and open to imagination and magic.\n"&ndash;&gt;-->
+        <!--&lt;!&ndash;"Surfaces and edges of the material provide visual cues that are grounded in reality. The "&ndash;&gt;-->
+        <!--&lt;!&ndash;"use of familiar tactile attributes helps users quickly understand affordances. Yet the "&ndash;&gt;-->
+        <!--&lt;!&ndash;"flexibility of the material creates new affordances that supercede those in the physical "&ndash;&gt;-->
+        <!--&lt;!&ndash;"world, without breaking the rules of physics.\n"&ndash;&gt;-->
+        <!--&lt;!&ndash;"The fundamentals of light, surface, and movement are key to conveying how objects move, "&ndash;&gt;-->
+        <!--&lt;!&ndash;"interact, and exist in space and in relation to each other. Realistic lighting shows "&ndash;&gt;-->
+        <!--&lt;!&ndash;"seams, divides space, and indicates moving parts.\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"Bold, graphic, intentional.\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"The foundational elements of print based design typography, grids, space, scale, color, "&ndash;&gt;-->
+        <!--&lt;!&ndash;"and use of imagery guide visual treatments. These elements do far more than please the "&ndash;&gt;-->
+        <!--&lt;!&ndash;"eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "&ndash;&gt;-->
+        <!--&lt;!&ndash;"imagery, large scale typography, and intentional white space create a bold and graphic "&ndash;&gt;-->
+        <!--&lt;!&ndash;"interface that immerse the user in the experience.\n"&ndash;&gt;-->
+        <!--&lt;!&ndash;"An emphasis on user actions makes core functionality immediately apparent and provides "&ndash;&gt;-->
+        <!--&lt;!&ndash;"waypoints for the user.\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"Motion provides meaning.\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"Motion respects and reinforces the user as the prime mover. Primary user actions are "&ndash;&gt;-->
+        <!--&lt;!&ndash;"inflection points that initiate motion, transforming the whole design.\n"&ndash;&gt;-->
+        <!--&lt;!&ndash;"All action takes place in a single environment. Objects are presented to the user without "&ndash;&gt;-->
+        <!--&lt;!&ndash;"breaking the continuity of experience even as they transform and reorganize.\n"&ndash;&gt;-->
+        <!--&lt;!&ndash;"Motion is meaningful and appropriate, serving to focus attention and maintain continuity. "&ndash;&gt;-->
+        <!--&lt;!&ndash;"Feedback is subtle yet clear. Transitions are efﬁcient yet coherent.\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"3D world.\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"The material environment is a 3D space, which means all objects have x, y, and z "&ndash;&gt;-->
+        <!--&lt;!&ndash;"dimensions. The z-axis is perpendicularly aligned to the plane of the display, with the "&ndash;&gt;-->
+        <!--&lt;!&ndash;"positive z-axis extending towards the viewer. Every sheet of material occupies a single "&ndash;&gt;-->
+        <!--&lt;!&ndash;"position along the z-axis and has a standard 1dp thickness.\n"&ndash;&gt;-->
+        <!--&lt;!&ndash;"On the web, the z-axis is used for layering and not for perspective. The 3D world is "&ndash;&gt;-->
+        <!--&lt;!&ndash;"emulated by manipulating the y-axis.\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"Light and shadow.\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"Within the material environment, virtual lights illuminate the scene. Key lights create "&ndash;&gt;-->
+        <!--&lt;!&ndash;"directional shadows, while ambient light creates soft shadows from all angles.\n"&ndash;&gt;-->
+        <!--&lt;!&ndash;"Shadows in the material environment are cast by these two light sources. In Android "&ndash;&gt;-->
+        <!--&lt;!&ndash;"development, shadows occur when light sources are blocked by sheets of material at "&ndash;&gt;-->
+        <!--&lt;!&ndash;"various positions along the z-axis. On the web, shadows are depicted by manipulating the "&ndash;&gt;-->
+        <!--&lt;!&ndash;"y-axis only. The following example shows the card with a height of 6dp.\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"Resting elevation.\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"All material objects, regardless of size, have a resting elevation, or default elevation "&ndash;&gt;-->
+        <!--&lt;!&ndash;"that does not change. If an object changes elevation, it should return to its resting "&ndash;&gt;-->
+        <!--&lt;!&ndash;"elevation as soon as possible.\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"Component elevations.\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"The resting elevation for a component type is consistent across apps (e.g., FAB elevation "&ndash;&gt;-->
+        <!--&lt;!&ndash;"does not vary from 6dp in one app to 16dp in another app).\n"&ndash;&gt;-->
+        <!--&lt;!&ndash;"Components may have different resting elevations across platforms, depending on the depth "&ndash;&gt;-->
+        <!--&lt;!&ndash;"of the environment (e.g., TV has a greater depth than mobile or desktop).\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"Responsive elevation and dynamic elevation offsets.\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"Some component types have responsive elevation, meaning they change elevation in response "&ndash;&gt;-->
+        <!--&lt;!&ndash;"to user input (e.g., normal, focused, and pressed) or system events. These elevation "&ndash;&gt;-->
+        <!--&lt;!&ndash;"changes are consistently implemented using dynamic elevation offsets.\n"&ndash;&gt;-->
+        <!--&lt;!&ndash;"Dynamic elevation offsets are the goal elevation that a component moves towards, relative "&ndash;&gt;-->
+        <!--&lt;!&ndash;"to the component’s resting state. They ensure that elevation changes are consistent "&ndash;&gt;-->
+        <!--&lt;!&ndash;"across actions and component types. For example, all components that lift on press have "&ndash;&gt;-->
+        <!--&lt;!&ndash;"the same elevation change relative to their resting elevation.\n"&ndash;&gt;-->
+        <!--&lt;!&ndash;"Once the input event is completed or cancelled, the component will return to its resting "&ndash;&gt;-->
+        <!--&lt;!&ndash;"elevation.\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"Avoiding elevation interference.\n\n"&ndash;&gt;-->
+
+        <!--&lt;!&ndash;"Components with responsive elevations may encounter other components as they move between "&ndash;&gt;-->
+        <!--&lt;!&ndash;"their resting elevations and dynamic elevation offsets. Because material cannot pass "&ndash;&gt;-->
+        <!--&lt;!&ndash;"through other material, components avoid interfering with one another any number of ways, "&ndash;&gt;-->
+        <!--&lt;!&ndash;"whether on a per component basis or using the entire app layout.\n"&ndash;&gt;-->
+        <!--&lt;!&ndash;"On a component level, components can move or be removed before they cause interference. "&ndash;&gt;-->
+        <!--&lt;!&ndash;"For example, a floating action button (FAB) can disappear or move off screen before a "&ndash;&gt;-->
+        <!--&lt;!&ndash;"user picks up a card, or it can move if a snackbar appears.\n"&ndash;&gt;-->
+        <!--&lt;!&ndash;"On the layout level, design your app layout to minimize opportunities for interference. "&ndash;&gt;-->
+        <!--&lt;!&ndash;"For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "&ndash;&gt;-->
+        <!--&lt;!&ndash;"when a user tries to pick up one of cards.\n\n"&ndash;&gt;-->
+    <!--</string>-->
+
+
+
+</resources>

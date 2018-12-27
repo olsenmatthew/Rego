@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "36665133776",
+    "firebase_url": "https://rego-reylo.firebaseio.com",
+    "project_id": "rego-reylo",
+    "storage_bucket": "rego-reylo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36665133776:android:ac52e48f1fcfed1c",
+        "android_client_info": {
+          "package_name": "com.reylo.rego"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36665133776-mksu5qchufc5dp2nv7rucf02ml03pa4v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reylo.rego",
+            "certificate_hash": "35ac3d3724415bec1927cc1b589fdf97c5e4c631"
+          }
+        },
+        {
+          "client_id": "36665133776-rrq15lic8qt42uspiu4esu9gbcaol2bp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACGCw3tyez5O_MeOiAxt7165oE5HWgca8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36665133776-rrq15lic8qt42uspiu4esu9gbcaol2bp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
