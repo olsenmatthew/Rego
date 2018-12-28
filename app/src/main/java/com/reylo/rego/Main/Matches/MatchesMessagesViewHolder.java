@@ -17,7 +17,8 @@ public class MatchesMessagesViewHolder extends RecyclerView.ViewHolder implement
     public TextView mMatchName;
     public ImageView mProfilePicURL;
     public TextView mGoneProfilePhotoUrl;
-
+    public TextView mTimeOfLastMessage;
+    public TextView mLastMessageContents;
 
     // hold references to views used to create matches name and profile picture
     public MatchesMessagesViewHolder(View itemView) {
@@ -28,6 +29,8 @@ public class MatchesMessagesViewHolder extends RecyclerView.ViewHolder implement
         mMatchName = (TextView) itemView.findViewById(R.id.matches_messages_view_holder_name);
         mProfilePicURL = (ImageView) itemView.findViewById(R.id.matches_messages_view_holder_profile_picture);
         mGoneProfilePhotoUrl = (TextView) itemView.findViewById(R.id.matches_messages_view_holder_gone_photo_url_holder);
+        mTimeOfLastMessage = (TextView) itemView.findViewById(R.id.matches_messages_view_holder_time_of_last_message);
+        mLastMessageContents = (TextView) itemView.findViewById(R.id.matches_messages_view_holder_last_message);
 
     }
 

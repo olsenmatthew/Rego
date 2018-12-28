@@ -11,19 +11,23 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.reylo.rego.R;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class ActivityTabbedMainMatches extends Fragment {
 
@@ -51,6 +55,8 @@ public class ActivityTabbedMainMatches extends Fragment {
 
     // declare database references
     private DatabaseReference usersDb;
+    private DatabaseReference chatDb;
+    private DatabaseReference theseUsersChatId;
 
     private MatchesObject matchesObject;
 
@@ -97,7 +103,7 @@ public class ActivityTabbedMainMatches extends Fragment {
     // get uid of matched/connected user
     private void getConnectedUserId() {
 
-        DatabaseReference connectedDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(thisUserID)
+        DatabaseReference connectedDatabaseReference = usersDb.child(thisUserID)
                 .child("Match").child("Connected");
         connectedDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -122,7 +128,7 @@ public class ActivityTabbedMainMatches extends Fragment {
     // then add items to recycler view if valid
     private void RetrieveConnectionInfo(String key) {
 
-        DatabaseReference otherUserDB = FirebaseDatabase.getInstance().getReference().child("Users").child(key);
+        DatabaseReference otherUserDB = usersDb.child(key);
         otherUserDB.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -131,7 +137,7 @@ public class ActivityTabbedMainMatches extends Fragment {
                 if (dataSnapshot.exists() && !dataSnapshot.toString().equals(thisUserID)){
 
                     //this is the other users id
-                    String otherUserId = dataSnapshot.getKey();
+                    final String otherUserId = dataSnapshot.getKey();
 
                     //getting other users first name
                     String firstName = "";
@@ -145,12 +151,66 @@ public class ActivityTabbedMainMatches extends Fragment {
                         profilePicURL = dataSnapshot.child("OnePic").child("OnePic").getValue().toString();
                     }
 
+
+
                     if (dataSnapshot.exists() && !dataSnapshot.toString().equals(thisUserID)) {
 
+                        theseUsersChatId = FirebaseDatabase.getInstance().getReference().child("Users").child(thisUserID).child("Match").child("Connected").child(otherUserId).child("ChatId");
+                        DatabaseReference theseUsersChatIdReference = theseUsersChatId;
 
                         matchesObject = new MatchesObject(otherUserId, firstName, profilePicURL);
-                        resultMessages.add(matchesObject);
-                        messagesAdapter.notifyDataSetChanged();
+
+                        final String finalFirstName = firstName;
+                        final String finalProfilePicURL = profilePicURL;
+                        theseUsersChatIdReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                chatDb =  FirebaseDatabase.getInstance().getReference().child("Chat");
+                                DatabaseReference chatDbReference = chatDb.child(dataSnapshot.getValue().toString());
+                                Query lastMessageQuery = chatDbReference.orderByKey().limitToLast(1);
+
+                                lastMessageQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                        if (dataSnapshot.exists()) {
+
+                                            String lastMessageContent = "";
+                                            long timestampMillis = 0;
+                                            for (DataSnapshot child: dataSnapshot.getChildren()) {
+                                                if (child.child("messageText").getValue() != null) {
+                                                    lastMessageContent = child.child("messageText").getValue().toString();
+                                                }
+                                                if (child.child("messageTimestamp").getValue() != null) {
+                                                    timestampMillis = Long.parseLong(child.child("messageTimestamp").getValue().toString());
+                                                }
+                                            }
+
+                                            String lastMessageTimestamp = createTimestamp(timestampMillis);
+
+                                            matchesObject = new MatchesObject(otherUserId, finalFirstName, finalProfilePicURL, lastMessageContent, lastMessageTimestamp);
+
+                                            resultMessages.add(matchesObject);
+                                            messagesAdapter.notifyDataSetChanged();
+
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
 
                         resultProfiles.add(matchesObject);
                         profileAdapter.notifyDataSetChanged();
@@ -226,6 +286,36 @@ public class ActivityTabbedMainMatches extends Fragment {
             getConnectedUserId();
 
         }
+
+    }
+
+    //Creating a timestamp from milliseconds (local to each user's time zone)
+    private String createTimestamp(long millis) {
+
+        //Setting bubbleTimestamp
+        String time = null;
+
+        final Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(millis);
+        int minutes = calendar.get(Calendar.MINUTE);
+        int hours = calendar.get(Calendar.HOUR);
+        int hoursOfDay = calendar.get(Calendar.HOUR_OF_DAY);
+        String firstOrLastTwelve = null;
+        if (hoursOfDay < 12) {
+            firstOrLastTwelve = " AM";
+        } else {
+            firstOrLastTwelve = " PM";
+        }
+        if (hours == 0) {
+            hours = 12;
+        }
+        time = String.format(Locale.getDefault(), "%02d:%02d", hours, minutes);
+
+        if (time == null) {
+            time = "";
+        }
+
+        return (time + firstOrLastTwelve);
 
     }
 

@@ -52,6 +52,8 @@ public class MatchesMessagesAdapter extends RecyclerView.Adapter<MatchesMessages
                 .transform(new MatchesMessagesAdapter.CircleTransform(context))
                 .into(holder.mProfilePicURL);
         holder.mGoneProfilePhotoUrl.setText(matchesList.get(position).getprofilePicURL());
+        holder.mTimeOfLastMessage.setText(matchesList.get(position).getLastMessageTimestamp());
+        holder.mLastMessageContents.setText(matchesList.get(position).getLastMessageContent());
 
     }
 

@@ -6,11 +6,19 @@ public class MatchesObject {
     private String userId;
     private String firstName;
     private String profilePicURL;
+    private String lastMessageContent;
+    private String lastMessageTimestamp;
 
     public MatchesObject (String userId, String firstName, String profilePicURL){
+        this(userId, firstName, profilePicURL, null, null);
+    }
+
+    public MatchesObject (String userId, String firstName, String profilePicURL, String lastMessageContent, String lastMessageTimestamp) {
         this.userId = userId;
         this.firstName = firstName;
         this.profilePicURL = profilePicURL;
+        this.lastMessageContent = lastMessageContent;
+        this.lastMessageTimestamp = lastMessageTimestamp;
     }
 
     public MatchesObject (String firstName, String profilePicURL){
@@ -45,5 +53,35 @@ public class MatchesObject {
         this.profilePicURL = profilePicURL;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getProfilePicURL() {
+        return profilePicURL;
+    }
+
+    public void setProfilePicURL(String profilePicURL) {
+        this.profilePicURL = profilePicURL;
+    }
+
+    public String getLastMessageContent() {
+        return lastMessageContent;
+    }
+
+    public void setLastMessageContent(String lastMessageContent) {
+        this.lastMessageContent = lastMessageContent;
+    }
+
+    public String getLastMessageTimestamp() {
+        return lastMessageTimestamp;
+    }
+
+    public void setLastMessageTimestamp(String lastMessageTimestamp) {
+        this.lastMessageTimestamp = lastMessageTimestamp;
+    }
 }

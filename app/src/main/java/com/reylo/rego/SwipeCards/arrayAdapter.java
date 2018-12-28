@@ -71,12 +71,7 @@ public class arrayAdapter extends ArrayAdapter<cards> {
 
         String nameAndAge = (card_item.getFirstName() + ", " + Integer.toString(card_item.getAge()));
 
-        if (card_item.getSchool().equals("default") && card_item.getJobTitle().equals("default")) {
-
-            schoolOrJob.setText("");
-            schoolOrJob.setVisibility(View.INVISIBLE);
-
-        } else if (!card_item.getSchool().equals("default") && !card_item.getJobTitle().equals("default")
+        if (!card_item.getSchool().equals("default") && !card_item.getJobTitle().equals("default")
                 && !card_item.getSchool().equals("") && !card_item.getJobTitle().equals("")) {
 
             String sorj = (card_item.getSchool() + ", " + card_item.getJobTitle());
@@ -84,23 +79,23 @@ public class arrayAdapter extends ArrayAdapter<cards> {
             schoolOrJob.setVisibility(View.VISIBLE);
 
         } else if (!card_item.getSchool().equals("default") && !card_item.getSchool().equals("")
-                && card_item.getJobTitle().equals("default")) {
+                && (card_item.getJobTitle().equals("default") || card_item.getJobTitle().equals(""))) {
 
             schoolOrJob.setText(card_item.getSchool());
             schoolOrJob.setVisibility(View.VISIBLE);
 
-        } else if (card_item.getSchool().equals("default") && !card_item.getJobTitle().equals("default")
-                && !card_item.getJobTitle().equals("")) {
+        } else if ((card_item.getSchool().equals("default") || card_item.getSchool().equals("default"))
+                && !card_item.getJobTitle().equals("default") && !card_item.getJobTitle().equals("")) {
 
             schoolOrJob.setText(card_item.getJobTitle());
             schoolOrJob.setVisibility(View.VISIBLE);
 
-        } else if ((card_item.getSchool().equals("default") || card_item.getSchool().equals("")) && (card_item.getJobTitle().equals("default")
-                 || card_item.getJobTitle().equals(""))) {
+        } else if ((card_item.getSchool().equals("default") || card_item.getSchool().equals(""))
+                && (card_item.getJobTitle().equals("default") || card_item.getJobTitle().equals(""))) {
 
             String sorj = "";
             schoolOrJob.setText(sorj);
-            schoolOrJob.setVisibility(View.VISIBLE);
+            schoolOrJob.setVisibility(View.INVISIBLE);
 
         }
 
