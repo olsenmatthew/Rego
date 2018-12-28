@@ -18,6 +18,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
@@ -59,6 +60,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -71,22 +73,30 @@ import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
 
 public class ChatActivity extends AppCompatActivity {
 
+    // declare firebase objects
     private FirebaseAuth mAuth;
+
+    // declare this user's id's
     private String thisUserID;
     private String chatId;
+
+    //declare database references
     private DatabaseReference usersDb;
     private DatabaseReference theseUsersChatId;
     private DatabaseReference chatDb;
     private DatabaseReference chatDbPlaceHolder;
 
+    // declare chat view components
     private RecyclerView chatRecyclerView;
     private LinearLayoutManager chatLayoutManager;
     private RecyclerView.Adapter chatAdapter;
 
+    //  other user's data
     private String otherUserId;
     private String otherUserName;
     private String otherUserProfilePhotoUrl;
 
+    // declare ui components
     private EmojiconEditText chatActivityEditText;
     private ImageView chatActivitySendButtonImageView;
     private ImageView chatActivityRecordAudioButtonImageView;
@@ -140,8 +150,6 @@ public class ChatActivity extends AppCompatActivity {
     //For contacts
     static private final int LOCATION_REQUEST_CODE = 1886;
 
-
-
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,31 +200,6 @@ public class ChatActivity extends AppCompatActivity {
         attachmentsDialog = new Dialog(this);
         //This needs to be placed before set content view, otherwise an exception will be thrown
         attachmentsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-
-//        //Giphy
-
-//        final GPHApi giphyClient = new GPHApiClient("E2hw7uB3fKouQPqKcVkSw1ZxYy06LDI2");
-//
-//        String giphySeachThis = chatActivityEditText.getText().toString();
-//
-//        giphyClient.search(giphySeachThis, MediaType.gif, null, null, null, null, new CompletionHandler<ListMediaResponse>() {
-//            @Override
-//            public void onComplete(ListMediaResponse result, Throwable e) {
-//                if (result == null) {
-//                    // Do what you want to do with the error
-//                } else {
-//                    if (result.getData() != null) {
-//                        for (Media gif : result.getData()) {
-//
-//
-//                            Log.v("giphy", gif.getId());
-//                        }
-//                    } else {
-//                        Log.e("giphy error", "No results found");
-//                    }
-//                }
-//            }
-//        });
 
         getChatId();
 
@@ -383,7 +366,14 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
-    //TODO: FIX LOCATION BUTTON
+    //Create Popup next to the bottom of the screen
+    //The popup contains buttons for:
+    // taking photos and videos
+    // getting photos and videos from the gallery
+    // sending music and other files
+    // sending contact info
+    // accessing google maps for users location (needs to send snapshot as add on feature)
+    // and finally dismissing the popup itself
     private void showAttachmentsDialog() {
 
         ImageView cameraButton;
@@ -599,6 +589,9 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // this function sends a text message to the database
+    // so all participants in the chat can read the contents
+    // This also smooth scrolls to the bottom of the recycler view on send
     private void sendMessage() {
 
         String messageToBeSent = chatActivityEditText.getText().toString();
@@ -619,6 +612,7 @@ public class ChatActivity extends AppCompatActivity {
             latestMessage.put("messageCameraContent", null);
             latestMessage.put("messageVideoContent", null);
             latestMessage.put("messageAttachmentContent", null);
+            latestMessage.put("messageAttachmentSize", null);
             latestMessage.put("contactMessageName", null);
             latestMessage.put("contactMessagePhoneNumber", null);
             latestMessage.put("contactMessageProfilePhoto", null);
@@ -639,6 +633,9 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // this function sends a audio message to the database
+    // so all participants in the chat can listen to the contents
+    // This also smooth scrolls to the bottom of the recycler view on send
     private void sendAudioMessage() {
 
         final DatabaseReference messageToBeSentDb = chatDb.push();
@@ -663,6 +660,7 @@ public class ChatActivity extends AppCompatActivity {
                 latestMessage.put("messageCameraContent", null);
                 latestMessage.put("messageVideoContent", null);
                 latestMessage.put("messageAttachmentContent", null);
+                latestMessage.put("messageAttachmentSize", null);
                 latestMessage.put("contactMessageName", null);
                 latestMessage.put("contactMessagePhoneNumber", null);
                 latestMessage.put("contactMessageProfilePhoto", null);
@@ -687,6 +685,9 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // this function sends a image message to the database
+    // so all participants in the chat can see the contents
+    // This also smooth scrolls to the bottom of the recycler view on send
     private void sendImageMessage(Uri uri) {
 
         final DatabaseReference messageToBeSentDb = chatDb.push();
@@ -710,6 +711,7 @@ public class ChatActivity extends AppCompatActivity {
                 latestMessage.put("messageCameraContent", messageCameraContent);
                 latestMessage.put("messageVideoContent", null);
                 latestMessage.put("messageAttachmentContent", null);
+                latestMessage.put("messageAttachmentSize", null);
                 latestMessage.put("contactMessageName", null);
                 latestMessage.put("contactMessagePhoneNumber", null);
                 latestMessage.put("contactMessageProfilePhoto", null);
@@ -733,6 +735,7 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // gets chat id from the connection these two users made
     private void getChatId() {
         theseUsersChatId.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -757,6 +760,10 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // listen in chat database for new messages
+    // for each message, check validity
+    // categorize messages by sender
+    // create new chat objects for each message
     private void retrieveChatMessages() {
 
         chatDb.addChildEventListener(new ChildEventListener() {
@@ -772,6 +779,7 @@ public class ChatActivity extends AppCompatActivity {
                     String messageCameraContent = null;
                     String messageVideoContent = null;
                     String messageAttachmentContent = null;
+                    String messageAttachmentSize = null;
                     String contactMessageName = null;
                     String contactMessagePhoneNumber = null;
                     String contactMessageProfilePhoto = null;
@@ -814,6 +822,12 @@ public class ChatActivity extends AppCompatActivity {
 
                     }
 
+                    if (dataSnapshot.child("messageAttachmentSize").getValue() != null) {
+
+                        messageAttachmentSize = dataSnapshot.child("messageAttachmentSize").getValue().toString();
+
+                    }
+
                     if (dataSnapshot.child("contactMessageName").getValue() != null) {
 
                         contactMessageName = dataSnapshot.child("contactMessageName").getValue().toString();
@@ -846,15 +860,15 @@ public class ChatActivity extends AppCompatActivity {
 
 
                     if (messageCreatorAndSomeContent(messageCreator, messageText, audioRecording, messageCameraContent,
-                            messageAttachmentContent, contactMessageName, contactMessagePhoneNumber, contactMessageProfilePhoto, messageVideoContent)) {
+                            messageAttachmentContent, messageAttachmentSize, contactMessageName, contactMessagePhoneNumber, contactMessageProfilePhoto, messageVideoContent)) {
 
                         //the message was sent from this user
                         if (messageCreator.equals(thisUserID)) {
 
                             ChatObject newMessage = new ChatObject(messageText, true, null, null,
                                                                     audioRecording, messageTimestamp, messageCameraContent, messageAttachmentContent,
-                                                                    contactMessageName, contactMessagePhoneNumber, contactMessageProfilePhoto,
-                                                                    messageVideoContent, keyMarker);
+                                                                    messageAttachmentSize, contactMessageName, contactMessagePhoneNumber,
+                                                                    contactMessageProfilePhoto, messageVideoContent, keyMarker);
                             resultChat.add(newMessage);
                             chatAdapter.notifyDataSetChanged();
                             //TODO: ADD NOTIFICATION TO SCROLL DOWN AS NEW MESSAGES ARE RECEIVED
@@ -867,8 +881,8 @@ public class ChatActivity extends AppCompatActivity {
 
                             ChatObject newMessage = new ChatObject(messageText, false, otherUserName, otherUserProfilePhotoUrl,
                                                                     audioRecording, messageTimestamp, messageCameraContent, messageAttachmentContent,
-                                                                    contactMessageName, contactMessagePhoneNumber, contactMessageProfilePhoto,
-                                                                    messageVideoContent, keyMarker);
+                                                                    messageAttachmentSize, contactMessageName, contactMessagePhoneNumber,
+                                                                    contactMessageProfilePhoto, messageVideoContent, keyMarker);
                             resultChat.add(newMessage);
                             chatAdapter.notifyDataSetChanged();
                             //TODO: ADD NOTIFICATION TO SCROLL DOWN AS NEW MESSAGES ARE RECEIVED
@@ -913,6 +927,8 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // if permissions to record audio are not granted, ask for the
+    // return true or false as to whether the are granted
     private boolean requestAndReturnAudioPermissions() {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.RECORD_AUDIO)
@@ -940,6 +956,8 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // if permissions to camera are not granted, ask for the
+    // return true or false as to whether the are granted
     private boolean requestAndReturnCameraPermissions() {
 
         if (ContextCompat.checkSelfPermission(this,
@@ -968,6 +986,8 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // if permissions to read and write contacts are not granted, ask for the
+    // return true or false as to whether the are granted
     private boolean requestAndReturnContactPermissions() {
 
         if (ContextCompat.checkSelfPermission(this,
@@ -1002,6 +1022,8 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // if permissions to read external storage are not given, request for them
+    // return true or false after user response as to whether they were given or not
     private boolean requestAndReturnReadExternalStoragePermissions() {
 
         if (ContextCompat.checkSelfPermission(this,
@@ -1030,6 +1052,7 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // start recording the audio message
     private void startRecording() {
 
         chatActivityAudioMessage = new MediaRecorder();
@@ -1049,9 +1072,10 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // stop recording the audio message,  then send the audio message
     private void stopRecording() {
 
-        try{
+        try {
 
             chatActivityAudioMessage.stop();
             chatActivityAudioMessage.reset();
@@ -1065,6 +1089,9 @@ public class ChatActivity extends AppCompatActivity {
         sendAudioMessage();
     }
 
+    // handles intent results
+    // dismisses the attachments dialog
+    // depending on the request codes, the uri will be used to send a certain type of message
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -1127,6 +1154,9 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // this function sends a contact message to the database
+    // so all participants in the chat can see the contact
+    // This also smooth scrolls to the bottom of the recycler view on send
     private void sendContactMessage(final String contactMessageName, final String contactMessagePhoneNumber, final Bitmap contactMessageProfilePhoto) {
 
         final DatabaseReference messageToBeSentDb = chatDb.push();
@@ -1158,6 +1188,7 @@ public class ChatActivity extends AppCompatActivity {
                     latestMessage.put("messageCameraContent", null);
                     latestMessage.put("messageVideoContent", null);
                     latestMessage.put("messageAttachmentContent", null);
+                    latestMessage.put("messageAttachmentSize", null);
                     latestMessage.put("contactMessageName", contactMessageName);
                     latestMessage.put("contactMessagePhoneNumber", contactMessagePhoneNumber);
                     latestMessage.put("contactMessageProfilePhoto", contactMessageProfilePhotoDownloadUrl);
@@ -1189,6 +1220,7 @@ public class ChatActivity extends AppCompatActivity {
             latestMessage.put("messageCameraContent", null);
             latestMessage.put("messageVideoContent", null);
             latestMessage.put("messageAttachmentContent", null);
+            latestMessage.put("messageAttachmentSize", null);
             latestMessage.put("contactMessageName", contactMessageName);
             latestMessage.put("contactMessagePhoneNumber", contactMessagePhoneNumber);
             latestMessage.put("contactMessageProfilePhoto", contactMessageProfilePhotoDownloadUrl);
@@ -1208,7 +1240,10 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
-    private void sendAttachmentMessage(Uri uri) {
+    // this function sends a file message to the database
+    // so all participants in the chat can download the contents
+    // This also smooth scrolls to the bottom of the recycler view on send
+    private void sendAttachmentMessage(final Uri uri) {
 
         final DatabaseReference messageToBeSentDb = chatDb.push();
         final Map latestMessage = new HashMap();
@@ -1224,13 +1259,17 @@ public class ChatActivity extends AppCompatActivity {
 
                 String keyMarker = RandomStringGenerator.randomAlphaNumeric(10);
 
-                String messageAttachmentContent = taskSnapshot.getDownloadUrl().toString();
+                String messageAttachmentContent = getNameOfFileFromUri(uri);
+                String messageAttachmentSize = getFileSizeFromUri(uri);
+
+
                 latestMessage.put("messageCreator", thisUserID);
                 latestMessage.put("audioRecording", null);
                 latestMessage.put("messageText", null);
                 latestMessage.put("messageCameraContent", null);
                 latestMessage.put("messageVideoContent", null);
                 latestMessage.put("messageAttachmentContent", messageAttachmentContent);
+                latestMessage.put("messageAttachmentSize", messageAttachmentSize);
                 latestMessage.put("contactMessageName", null);
                 latestMessage.put("contactMessagePhoneNumber", null);
                 latestMessage.put("contactMessageProfilePhoto", null);
@@ -1255,6 +1294,9 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // this function sends a video message to the database
+    // so all participants in the chat can watch the contents
+    // This also smooth scrolls to the bottom of the recycler view on send
     private void sendVideoMessage(Uri uri) {
 
         final DatabaseReference messageToBeSentDb = chatDb.push();
@@ -1277,6 +1319,7 @@ public class ChatActivity extends AppCompatActivity {
                 latestMessage.put("messageText", null);
                 latestMessage.put("messageCameraContent", null);
                 latestMessage.put("messageAttachmentContent", null);
+                latestMessage.put("messageAttachmentSize", null);
                 latestMessage.put("messageVideoContent", messageVideoContent);
                 latestMessage.put("contactMessageName", null);
                 latestMessage.put("contactMessagePhoneNumber", null);
@@ -1300,6 +1343,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     //TODO:  CHANGE FILE PATH TO GALLERY TO BE VISIBLE
+    // stores the image to external files directory
     private File createImageFile() throws IOException {
 
         // Create an image file name
@@ -1318,6 +1362,7 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // retrieve and return contact's photo as a bitmap
     private Bitmap retrieveContactPhoto() {
 
         Bitmap photo = null;
@@ -1342,6 +1387,7 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // retrieves and returns contact number as string
     private String retrieveContactNumber() {
 
         String contactNumber = null;
@@ -1379,6 +1425,7 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // retrieves contact name as string
     private String retrieveContactName() {
 
         String contactName = null;
@@ -1398,6 +1445,7 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // tests mime types and returns whether the given uri involves an image
     public boolean isImage(Context context, Uri uri) {
         String mimeType = null;
         if (uri.getScheme().equals(ContentResolver.SCHEME_CONTENT)) {
@@ -1428,6 +1476,7 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // tests mime types and returns whether the given uri involves a video
     public boolean isVideo(Context context, Uri uri) {
 
         String mimeType = null;
@@ -1459,14 +1508,18 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    // returns true or false as to whether there is a creator of the message and content
     private boolean messageCreatorAndSomeContent(String messageCreator, String messageText, String audioRecording,
                                                     String messageCameraContent, String messageAttachmentContent,
-                                                    String contactMessageName, String contactMessagePhoneNumber,
-                                                    String contactMessageProfilePhoto, String messageVideoContent) {
+                                                    String messageAttachmentSize, String contactMessageName,
+                                                    String contactMessagePhoneNumber, String contactMessageProfilePhoto,
+                                                    String messageVideoContent) {
 
-        if(messageCreator != null && (messageText != null || audioRecording != null
-                || messageCameraContent != null || messageAttachmentContent != null
-                || (contactMessageName != null && contactMessagePhoneNumber != null && contactMessageProfilePhoto != null) || messageVideoContent != null)) {
+        if(messageCreator != null
+                && (messageText != null || audioRecording != null
+                    || messageCameraContent != null || (messageAttachmentContent != null && messageAttachmentSize != null)
+                    || (contactMessageName != null && contactMessagePhoneNumber != null && contactMessageProfilePhoto != null)
+                    || messageVideoContent != null)) {
 
             return true;
 
@@ -1479,6 +1532,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
 
+    // dismiss dialog is it still exists
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -1491,6 +1545,64 @@ public class ChatActivity extends AppCompatActivity {
 
         }
 
+
+    }
+
+    // use uri to get name of file, if not available, use path of last segment
+    private String getNameOfFileFromUri(Uri uri) {
+
+        String filename = "";
+
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                filename = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+            }
+        } finally {
+            cursor.close();
+        }
+
+        if (filename == null || filename.equals("")) {
+
+            filename = uri.getPath();
+
+            int last_index = filename.lastIndexOf("/");
+
+            if (last_index != -1) {
+                filename = filename.substring(++last_index);
+            }
+
+            if (filename.equals("")) {
+                filename = uri.getLastPathSegment();
+            }
+
+        }
+
+        return filename;
+
+    }
+
+    // use uri to get size of file
+    private String getFileSizeFromUri(Uri uri) {
+
+        String size = "";
+
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+                size = cursor.getString(cursor.getColumnIndex(OpenableColumns.SIZE));
+            }
+        } finally {
+            cursor.close();
+        }
+
+        double megabytes = (double) Integer.valueOf(size) / (1024*1024);
+
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+
+        size = decimalFormat.format(megabytes) + "MB";
+
+        return size;
 
     }
 

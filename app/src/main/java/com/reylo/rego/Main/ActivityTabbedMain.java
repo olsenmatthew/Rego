@@ -148,9 +148,7 @@ public class ActivityTabbedMain extends AppCompatActivity {
                                                             //background location service
                                                             startService(new Intent(ActivityTabbedMain.this, UserLocationBackgroundService.class));
 
-                                                        }
-
-                                                        if (!dataSnapshot.exists()) {
+                                                        } else {
 
                                                             finish();
                                                             startActivity(new Intent(ActivityTabbedMain.this, UserProfilePicture.class));
@@ -165,8 +163,7 @@ public class ActivityTabbedMain extends AppCompatActivity {
                                                     }
                                                 });
 
-                                            }
-                                            if (!dataSnapshot.exists()) {
+                                            } else {
 
                                                 finish();
                                                 startActivity(new Intent(ActivityTabbedMain.this, UserGender.class));
@@ -180,8 +177,7 @@ public class ActivityTabbedMain extends AppCompatActivity {
                                         }
                                     });
 
-                                }
-                                if (!dataSnapshot.exists()) {
+                                } else {
 
                                     finish();
                                     startActivity(new Intent(ActivityTabbedMain.this, UserBirthday.class));
@@ -194,14 +190,13 @@ public class ActivityTabbedMain extends AppCompatActivity {
 
                             }
                         });
-                    }
-
-                    if (!dataSnapshot.exists()) {
+                    } else {
 
                         finish();
                         startActivity(new Intent(ActivityTabbedMain.this, UserFirstName.class));
 
                     }
+
                 }
 
                 @Override

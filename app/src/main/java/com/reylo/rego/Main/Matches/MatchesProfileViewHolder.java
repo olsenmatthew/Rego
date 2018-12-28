@@ -18,6 +18,7 @@ public class MatchesProfileViewHolder extends RecyclerView.ViewHolder implements
     public ImageView mMatchProfilePicRecyclerPicture;
     public TextView mGoneProfilePhotoUrl;
 
+    // hold references to views used to create matches name and profile picture
     public MatchesProfileViewHolder(View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);

@@ -50,7 +50,6 @@ public class UserBirthday extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_birthday);
 
         // get user
         firebaseAuth = FirebaseAuth.getInstance();
@@ -86,6 +85,8 @@ public class UserBirthday extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+
+        setContentView(R.layout.activity_user_birthday);
 
         // connect ui components to corresponding components in activity_user_birthday layout
         userBirthdayDateEditText = (EditText) findViewById(R.id.userBirthdayDateEditText);

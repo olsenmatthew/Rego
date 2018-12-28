@@ -65,6 +65,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // find out who sent the message and what type of message is to be displayed based on it's contents
+    // then create the message, and display it while hiding all other views pertaining to other messages
     @Override
     public void onBindViewHolder(final ChatViewHolder holder, int position) {
 
@@ -145,6 +147,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // transform a square photo to circular format
     public static class CircleTransform extends BitmapTransformation {
         public CircleTransform(Context context) {
             super(context);
@@ -164,7 +167,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
             int x = (source.getWidth() - size) / 2;
             int y = (source.getHeight() - size) / 2;
 
-            // TODO this could be acquired from the pool too
             Bitmap squared = Bitmap.createBitmap(source, x, y, size, size);
 
             Bitmap result = pool.get(size, size, Bitmap.Config.ARGB_8888);
@@ -189,21 +191,25 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // return number of messages
     @Override
     public int getItemCount() {
         return this.chatList.size();
     }
 
+    // return position
     @Override
     public int getItemViewType(int position) {
         return position;
     }
 
+    // return position
     @Override
     public long getItemId(int position) {
         return position;
     }
 
+    // return whether this message is a text message or not
     private boolean isTextMessage(int position) {
 
         if (chatList.get(position).getMessageText() != null && chatList.get(position).getAudioRecordingUrl() == null
@@ -221,6 +227,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // return whether this message is a audio message or not
     private boolean isAudioMessage(int position) {
 
         if (chatList.get(position).getMessageText() == null && chatList.get(position).getAudioRecordingUrl() != null
@@ -238,6 +245,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // return whether this message is a image or not
     private boolean isCameraContentMessage(int position) {
 
         if (chatList.get(position).getMessageText() == null && chatList.get(position).getAudioRecordingUrl() == null
@@ -255,6 +263,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // return whether this message is a video or not
     private boolean isVideoMessage(int position) {
 
         if (chatList.get(position).getMessageText() == null && chatList.get(position).getAudioRecordingUrl() == null
@@ -272,6 +281,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // return whether this message is a attachment or not
     private boolean isAttachmentMessage(int position) {
 
         if (chatList.get(position).getMessageText() == null && chatList.get(position).getAudioRecordingUrl() == null
@@ -289,6 +299,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // return whether this message is a contact or not
     private boolean isContactMessage(int position) {
 
         if (chatList.get(position).getMessageText() == null && chatList.get(position).getAudioRecordingUrl() == null
@@ -306,6 +317,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // display message contents, set colors
+    // hide all views that are not meant for text messages sent from this user
     private void showMyTextMessage (final ChatViewHolder holder, int position, String bubbleTimestamp) {
 
         //hide all other message views in new thread
@@ -375,6 +388,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // display message contents, set colors
+    // hide all views that are not meant for audio messages sent from this user
     private void showMyAudioMessage (final ChatViewHolder holder, final int position, final String bubbleTimestamp, final String audioTrackerDefault) {
 
         new Thread(new Runnable() {
@@ -441,6 +456,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // display message contents, set colors
+    // hide all views that are not meant for image messages sent from this user
     private void showMyCameraContentMessages (final ChatViewHolder holder, final int position, String bubbleTimestamp, String audioTrackerDefault) {
 
         new Thread(new Runnable() {
@@ -539,6 +556,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // display message contents, set colors
+    // hide all views that are not meant for video messages sent from this user
     private void showMyVideoMessages (final ChatViewHolder holder, final int position, String bubbleTimestamp, String audioTrackerDefault) throws IOException {
 
 
@@ -645,6 +664,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // display message contents, set colors
+    // hide all views that are not meant for attachment messages sent from this user
     private void showMyAttachmentMessages (final ChatViewHolder holder, int position, String bubbleTimestamp, String audioTrackerDefault) {
 
         //Show only this users attachment messages
@@ -662,7 +683,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
         holder.mAttachmentMessagesTimeStamp.setText(bubbleTimestamp);
         holder.mAttachmentMessagesTitle.setText(chatList.get(position).getMessageAttachmentContent());
-        holder.mAttachmentMessagesSizeType.setText(chatList.get(position).getMessageAttachmentContent());
+        holder.mAttachmentMessagesSizeType.setText(chatList.get(position).getMessageAttachmentSize());
         holder.mAttachmentMessagesTimeStamp.setTextColor(Color.parseColor("#ffffff"));
         holder.mAttachmentMessagesTitle.setTextColor(Color.parseColor("#ffffff"));
         holder.mAttachmentMessagesSizeType.setTextColor(Color.parseColor("#ffffff"));
@@ -671,6 +692,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // display message contents, set colors
+    // hide all views that are not meant for contact messages sent from this user
     private void showMyContactMessages (final ChatViewHolder holder, final int position, String bubbleTimestamp, String audioTrackerDefault) {
 
         new Thread(new Runnable() {
@@ -716,7 +739,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
         holder.mContactMessages.setVisibility(View.VISIBLE);
 
     }
-    
+
+    // display message contents, set colors
+    // hide all views that are not meant for text messages sent from another user
     private void showOtherTextMessage (final ChatViewHolder holder, final int position, String bubbleTimestamp) {
 
         new Thread(new Runnable() {
@@ -797,6 +822,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // display message contents, set colors
+    // hide all views that are not meant for audio messages sent from another user
     private void showOtherAudioMessage (final ChatViewHolder holder, final int position, String bubbleTimestamp, String audioTrackerDefault) {
 
         new Thread(new Runnable() {
@@ -854,6 +881,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // display message contents, set colors
+    // hide all views that are not meant for image messages sent from another user
     private void showOtherCameraContentMessages (final ChatViewHolder holder, final int position, String bubbleTimestamp, String audioTrackerDefault) {
 
         new Thread(new Runnable() {
@@ -952,6 +981,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // display message contents, set colors
+    // hide all views that are not meant for video messages sent from another user
     private void showOtherVideoMessages (final ChatViewHolder holder, final int position, String bubbleTimestamp, String audioTrackerDefault) {
 
         new Thread(new Runnable() {
@@ -1060,6 +1091,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // display message contents, set colors
+    // hide all views that are not meant for attachment messages sent from another user
     private void showOtherAttachmentMessages (final ChatViewHolder holder, int position, String bubbleTimestamp, String audioTrackerDefault) {
 
         //Show other users attachment message
@@ -1077,7 +1110,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
         holder.otherAttachmentMessagesTimeStamp.setText(bubbleTimestamp);
         holder.otherAttachmentMessagesTitle.setText(chatList.get(position).getMessageAttachmentContent());
-        holder.otherAttachmentMessagesSizeType.setText(chatList.get(position).getMessageAttachmentContent());
+        holder.otherAttachmentMessagesSizeType.setText(chatList.get(position).getMessageAttachmentSize());
         holder.otherAttachmentMessagesTimeStamp.setTextColor(Color.parseColor("#000000"));
         holder.otherAttachmentMessagesTitle.setTextColor(Color.parseColor("#000000"));
         holder.otherAttachmentMessagesSizeType.setTextColor(Color.parseColor("#000000"));
@@ -1086,6 +1119,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
     }
 
+    // display message contents, set colors
+    // hide all views that are not meant for contact messages sent from another user
     private void showOtherContactMessages (final ChatViewHolder holder, final int position, String bubbleTimestamp, String audioTrackerDefault) {
 
         new Thread(new Runnable() {
@@ -1166,7 +1201,5 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
         return (time + firstOrLastTwelve);
 
     }
-
-
 
 }

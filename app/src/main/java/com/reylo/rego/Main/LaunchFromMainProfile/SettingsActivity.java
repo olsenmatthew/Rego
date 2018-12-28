@@ -3,7 +3,7 @@ package com.reylo.rego.Main.LaunchFromMainProfile;
 /*
 
 This activity is unfinished
-features will soon be added to complete the functionality
+new features will soon be added to complete the full functionality
 
  */
 
@@ -49,9 +49,9 @@ public class SettingsActivity extends AppCompatActivity {
     // declare db references
     private DatabaseReference mUserDatabase;
 
-    //declare ui components
-
-    private RadioRealButtonGroup mRadioGroup;
+    // declare ui components
+    // contains gender interest options
+//    private RadioRealButtonGroup mRadioGroup;
     //logout and delete account buttons
     private Button mLogOutButton;
     private Button mDeleteAccountButton;
@@ -65,7 +65,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_settings);
 
-        mRadioGroup = findViewById(R.id.radioRealButtonGroup);
+        //mRadioGroup = findViewById(R.id.radioRealButtonGroup);
         mLogOutButton = findViewById(R.id.edit_settings_log_out);
         mDeleteAccountButton = findViewById(R.id.edit_settings_delete_account);
 
@@ -75,7 +75,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
 
-        getUserInfo();
+        //getUserInfo();
 
         // on click, log out user and return to login activity
         mLogOutButton.setOnClickListener(new View.OnClickListener() {
@@ -95,65 +95,65 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
-    private void getUserInfo() {
-
-        mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                if(dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){
-
-                    if(dataSnapshot.child("interest").getValue()!=null) {
-
-                        interest = dataSnapshot.child("interest").getValue().toString();
-
-                    }
-
-                    if(interest.equals("Male")) {
-
-                        mRadioGroup.setPosition(0);
-
-                    } else if(interest.equals("Female")) {
-
-                        mRadioGroup.setPosition(1);
-
-                    } else {
-
-                        mRadioGroup.setPosition(2);
-
-                    }
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-    }
-
-    private void saveUserInformation() {
-
-        switch(mRadioGroup.getPosition()) {
-            case 0:
-                interest = "Male";
-                break;
-            case 1:
-                interest = "Female";
-                break;
-            case 2:
-                interest = "Both";
-                break;
-        }
-
-        Map userInfo = new HashMap();
-        userInfo.put("interest", interest);
-        mUserDatabase.updateChildren(userInfo);
-
-    }
+//   private void getUserInfo() {
+//
+//        mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                if(dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){
+//
+//                    if(dataSnapshot.child("interest").getValue()!=null) {
+//
+//                        interest = dataSnapshot.child("interest").getValue().toString();
+//
+//                    }
+//
+//                    if(interest.equals("Male")) {
+//
+//                        mRadioGroup.setPosition(0);
+//
+//                    } else if(interest.equals("Female")) {
+//
+//                        mRadioGroup.setPosition(1);
+//
+//                    } else {
+//
+//                        mRadioGroup.setPosition(2);
+//
+//                    }
+//
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//    }
+//
+//    private void saveUserInformation() {
+//
+//        switch(mRadioGroup.getPosition()) {
+//            case 0:
+//                interest = "Male";
+//                break;
+//            case 1:
+//                interest = "Female";
+//                break;
+//            case 2:
+//                interest = "Both";
+//                break;
+//        }
+//
+//        Map userInfo = new HashMap();
+//        userInfo.put("interest", interest);
+//        mUserDatabase.updateChildren(userInfo);
+//
+//    }
 
     //log out the user and return to login activity
     private void logOut(){
@@ -194,7 +194,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        saveUserInformation();
+        //saveUserInformation();
         finish();
         return false;
 

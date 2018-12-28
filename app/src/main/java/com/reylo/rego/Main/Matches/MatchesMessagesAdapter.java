@@ -40,6 +40,7 @@ public class MatchesMessagesAdapter extends RecyclerView.Adapter<MatchesMessages
 
     }
 
+    // update item view with items
     @Override
     public void onBindViewHolder(MatchesMessagesViewHolder holder, int position) {
 
@@ -54,6 +55,7 @@ public class MatchesMessagesAdapter extends RecyclerView.Adapter<MatchesMessages
 
     }
 
+    // transforms image into circular format
     public static class CircleTransform extends BitmapTransformation {
         public CircleTransform(Context context) {
             super(context);
@@ -92,6 +94,7 @@ public class MatchesMessagesAdapter extends RecyclerView.Adapter<MatchesMessages
         }
     }
 
+    // returns number of matches objects
     @Override
     public int getItemCount() {
         return this.matchesList.size();
@@ -102,11 +105,14 @@ public class MatchesMessagesAdapter extends RecyclerView.Adapter<MatchesMessages
         return position;
     }
 
+    // keep items from changing position
+    // no need to bind items again
     @Override
     public void setHasStableIds(boolean hasStableIds) {
         setHasStableIds(true);
     }
 
+    // return position of item
     @Override
     public long getItemId(int position) {
         return position;

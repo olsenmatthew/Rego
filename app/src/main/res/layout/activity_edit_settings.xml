@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:background="#f1f1f1">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,210 +19,435 @@
             android:layout_height="wrap_content"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/edit_settings_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
         </android.support.design.widget.AppBarLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="20dp"
-            android:text="Show Me"
-            android:textStyle="bold" />
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="24dp"-->
+            <!--android:layout_marginRight="24dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:text="Show Me"-->
+            <!--android:textStyle="bold" />-->
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:orientation="vertical"
-            android:background="@drawable/box_rounder"
-            >
+        <!--<android.support.constraint.ConstraintLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:orientation="vertical"-->
+            <!--android:background="@drawable/box_rounder"-->
+            <!--&gt;-->
 
-            <co.ceryle.radiorealbutton.RadioRealButtonGroup
-                android:id="@+id/radioRealButtonGroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:background="@drawable/box_rounder"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:rrbg_animateDrawables_enter="overshoot"
-                app:rrbg_animateDrawables_enterDuration="500"
-                app:rrbg_animateDrawables_exit="overshoot"
-                app:rrbg_animateDrawables_exitDuration="500"
-                app:rrbg_animateDrawables_scale="1.2"
-                app:rrbg_animateTexts_enter="overshoot"
-                app:rrbg_animateTexts_enterDuration="500"
-                app:rrbg_bottomLineColor="@color/colorPrimary"
-                app:rrbg_buttonsPaddingBottom="20sp"
-                app:rrbg_buttonsPaddingTop="14dp"
-                app:rrbg_dividerColor="@color/colorPrimary"
-                app:rrbg_dividerSize="1px"
-                app:rrbg_selectorAboveOfBottomLine="false"
-                app:rrbg_selectorColor="@color/colorPrimary"
-                app:rrbg_selectorDividerPadding="20sp"
-                app:rrbg_selectorSize="6dp"
-                app:rrbg_selectorTop="false">
+            <!--<co.ceryle.radiorealbutton.RadioRealButtonGroup-->
+                <!--android:id="@+id/radioRealButtonGroup"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="4dp"-->
+                <!--android:layout_marginRight="4dp"-->
+                <!--android:background="@drawable/box_rounder"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent"-->
+                <!--app:rrbg_animateDrawables_enter="overshoot"-->
+                <!--app:rrbg_animateDrawables_enterDuration="500"-->
+                <!--app:rrbg_animateDrawables_exit="overshoot"-->
+                <!--app:rrbg_animateDrawables_exitDuration="500"-->
+                <!--app:rrbg_animateDrawables_scale="1.2"-->
+                <!--app:rrbg_animateTexts_enter="overshoot"-->
+                <!--app:rrbg_animateTexts_enterDuration="500"-->
+                <!--app:rrbg_bottomLineColor="@color/colorPrimary"-->
+                <!--app:rrbg_buttonsPaddingBottom="20sp"-->
+                <!--app:rrbg_buttonsPaddingTop="14dp"-->
+                <!--app:rrbg_dividerColor="@color/colorPrimary"-->
+                <!--app:rrbg_dividerSize="1px"-->
+                <!--app:rrbg_selectorAboveOfBottomLine="false"-->
+                <!--app:rrbg_selectorColor="@color/colorPrimary"-->
+                <!--app:rrbg_selectorDividerPadding="20sp"-->
+                <!--app:rrbg_selectorSize="6dp"-->
+                <!--app:rrbg_selectorTop="false">-->
 
-                <co.ceryle.radiorealbutton.RadioRealButton
-                    android:id="@+id/edit_settings_radio_button_show_males"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:rrb_drawable="@drawable/ic_male"
-                    app:rrb_drawableGravity="top"
-                    app:rrb_drawableHeight="40dp"
-                    app:rrb_drawableTint="@color/colorPrimary"
-                    app:rrb_drawableWidth="40dp"
-                    app:rrb_text="Male"
-                    app:rrb_textColor="@color/colorPrimary"
-                    app:rrb_textSize="12sp" />
+                <!--<co.ceryle.radiorealbutton.RadioRealButton-->
+                    <!--android:id="@+id/edit_settings_radio_button_show_males"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--app:rrb_drawable="@drawable/ic_male"-->
+                    <!--app:rrb_drawableGravity="top"-->
+                    <!--app:rrb_drawableHeight="40dp"-->
+                    <!--app:rrb_drawableTint="@color/colorPrimary"-->
+                    <!--app:rrb_drawableWidth="40dp"-->
+                    <!--app:rrb_text="Male"-->
+                    <!--app:rrb_textColor="@color/colorPrimary"-->
+                    <!--app:rrb_textSize="12sp" />-->
 
-                <co.ceryle.radiorealbutton.RadioRealButton
-                    android:id="@+id/edit_settings_radio_button_show_females"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:rrb_drawable="@drawable/ic_female"
-                    app:rrb_drawableGravity="top"
-                    app:rrb_drawableHeight="40dp"
-                    app:rrb_drawableTint="@color/colorPrimary"
-                    app:rrb_drawableWidth="40dp"
-                    app:rrb_rippleColor="@color/colorPrimary"
-                    app:rrb_text="Female"
-                    app:rrb_textColor="@color/colorPrimary"
-                    app:rrb_textSize="12sp" />
+                <!--<co.ceryle.radiorealbutton.RadioRealButton-->
+                    <!--android:id="@+id/edit_settings_radio_button_show_females"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--app:rrb_drawable="@drawable/ic_female"-->
+                    <!--app:rrb_drawableGravity="top"-->
+                    <!--app:rrb_drawableHeight="40dp"-->
+                    <!--app:rrb_drawableTint="@color/colorPrimary"-->
+                    <!--app:rrb_drawableWidth="40dp"-->
+                    <!--app:rrb_rippleColor="@color/colorPrimary"-->
+                    <!--app:rrb_text="Female"-->
+                    <!--app:rrb_textColor="@color/colorPrimary"-->
+                    <!--app:rrb_textSize="12sp" />-->
 
-                <co.ceryle.radiorealbutton.RadioRealButton
-                    android:id="@+id/edit_settings_radio_button_show_both"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:rrb_drawable="@drawable/ic_male_female"
-                    app:rrb_drawableGravity="top"
-                    app:rrb_drawableHeight="40dp"
-                    app:rrb_drawableTint="@color/colorPrimary"
-                    app:rrb_drawableWidth="40dp"
-                    app:rrb_rippleColor="@color/colorPrimary"
-                    app:rrb_text="Both"
-                    app:rrb_textColor="@color/colorPrimary"
-                    app:rrb_textSize="12sp" />
+                <!--<co.ceryle.radiorealbutton.RadioRealButton-->
+                    <!--android:id="@+id/edit_settings_radio_button_show_both"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--app:rrb_drawable="@drawable/ic_male_female"-->
+                    <!--app:rrb_drawableGravity="top"-->
+                    <!--app:rrb_drawableHeight="40dp"-->
+                    <!--app:rrb_drawableTint="@color/colorPrimary"-->
+                    <!--app:rrb_drawableWidth="40dp"-->
+                    <!--app:rrb_rippleColor="@color/colorPrimary"-->
+                    <!--app:rrb_text="Both"-->
+                    <!--app:rrb_textColor="@color/colorPrimary"-->
+                    <!--app:rrb_textSize="12sp" />-->
 
-            </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+            <!--</co.ceryle.radiorealbutton.RadioRealButtonGroup>-->
 
-        </android.support.constraint.ConstraintLayout>
+        <!--</android.support.constraint.ConstraintLayout>-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="16dp"
-            android:text="Invisibility Mode"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+        <!--<android.support.constraint.ConstraintLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="16dp"-->
+            <!--android:background="@drawable/box_rounder"-->
+            <!--android:orientation="vertical">-->
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:orientation="vertical"
-            android:background="@drawable/box_rounder"
-            >
+            <!--<TextView-->
+                <!--android:id="@+id/edit_settings_age_range_text_label"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:text="Age Range"-->
+                <!--android:textSize="14sp"-->
+                <!--android:textStyle="bold"-->
+                <!--app:layout_constraintBottom_toTopOf="@+id/rangeBar"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintHorizontal_bias="0.05"-->
+                <!--app:layout_constraintStart_toStartOf="@+id/rangeBar"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
 
-            <TextView
-                android:id="@+id/edit_settings_invisible_mode_people"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Stay invisible from people"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/edit_settings_invisibility_people_switch"
-                app:layout_constraintEnd_toStartOf="@+id/edit_settings_invisibility_people_switch"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/edit_settings_invisibility_people_switch" />
+            <!--<TextView-->
+                <!--android:id="@+id/edit_settings_age_range_text_lower_display"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:text="18"-->
+                <!--android:textStyle="bold"-->
+                <!--app:layout_constraintBottom_toBottomOf="@+id/edit_settings_age_range_text_dash_display"-->
+                <!--app:layout_constraintEnd_toStartOf="@+id/edit_settings_age_range_text_dash_display"-->
+                <!--app:layout_constraintHorizontal_bias="1.0"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@+id/edit_settings_age_range_text_upper_display" />-->
 
-            <Switch
-                android:id="@+id/edit_settings_invisibility_people_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.95"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <!--<TextView-->
+                <!--android:id="@+id/edit_settings_age_range_text_dash_display"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:text=" - "-->
+                <!--android:textStyle="bold"-->
+                <!--app:layout_constraintBottom_toBottomOf="@+id/edit_settings_age_range_text_upper_display"-->
+                <!--app:layout_constraintEnd_toStartOf="@+id/edit_settings_age_range_text_upper_display"-->
+                <!--app:layout_constraintHorizontal_bias="1.0"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@+id/edit_settings_age_range_text_upper_display" />-->
 
-        </android.support.constraint.ConstraintLayout>
+            <!--<TextView-->
+                <!--android:id="@+id/edit_settings_age_range_text_upper_display"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:text="65+"-->
+                <!--android:textStyle="bold"-->
+                <!--app:layout_constraintBottom_toBottomOf="@+id/edit_settings_age_range_text_label"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintHorizontal_bias="0.9"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@+id/edit_settings_age_range_text_label" />-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="16dp"
-            android:text="Personal Information"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            <!--<com.edmodo.rangebar.RangeBar-->
+                <!--android:id="@+id/rangeBar"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/edit_settings_age_range_text_label" />-->
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:orientation="vertical"
-            android:background="@drawable/box_rounder"
-            >
+        <!--</android.support.constraint.ConstraintLayout>-->
 
-            <TextView
-                android:id="@+id/edit_settings_hide_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:text="Hide my age"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/edit_settings_hide_age_switch"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/edit_settings_hide_age_switch" />
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="24dp"-->
+            <!--android:layout_marginRight="24dp"-->
+            <!--android:layout_marginTop="0dp"-->
+            <!--android:text="Invisibility Mode"-->
+            <!--android:textSize="14sp"-->
+            <!--android:textStyle="bold" />-->
 
-            <Switch
-                android:id="@+id/edit_settings_hide_age_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.95"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <!--<android.support.constraint.ConstraintLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:orientation="vertical"-->
+            <!--android:background="@drawable/box_rounder"-->
+            <!--&gt;-->
 
-        </android.support.constraint.ConstraintLayout>
+            <!--<TextView-->
+                <!--android:id="@+id/edit_settings_invisible_mode_people"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:text="Stay invisible from people"-->
+                <!--android:textSize="14sp"-->
+                <!--android:textStyle="bold"-->
+                <!--app:layout_constraintBottom_toBottomOf="@+id/edit_settings_invisibility_people_switch"-->
+                <!--app:layout_constraintEnd_toStartOf="@+id/edit_settings_invisibility_people_switch"-->
+                <!--app:layout_constraintHorizontal_bias="0.0"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@+id/edit_settings_invisibility_people_switch" />-->
+
+            <!--<Switch-->
+                <!--android:id="@+id/edit_settings_invisibility_people_switch"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--app:layout_constraintBottom_toTopOf="@+id/edit_settings_invisible_mode_separator_invisible"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintHorizontal_bias="0.95"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/edit_settings_invisible_mode_separator_invisible"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text=""-->
+                <!--android:textSize="8dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:visibility="invisible"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/edit_settings_invisible_mode_places"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:text="Stay invisible from places"-->
+                <!--android:textSize="14sp"-->
+                <!--android:textStyle="bold"-->
+                <!--app:layout_constraintBottom_toBottomOf="@+id/edit_settings_invisibility_places_switch"-->
+                <!--app:layout_constraintEnd_toStartOf="@+id/edit_settings_invisibility_places_switch"-->
+                <!--app:layout_constraintHorizontal_bias="0.0"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@+id/edit_settings_invisibility_places_switch" />-->
+
+            <!--<Switch-->
+                <!--android:id="@+id/edit_settings_invisibility_places_switch"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintHorizontal_bias="0.95"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/edit_settings_invisible_mode_separator_invisible" />-->
+
+        <!--</android.support.constraint.ConstraintLayout>-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="24dp"-->
+            <!--android:layout_marginRight="24dp"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:text="Personal Information"-->
+            <!--android:textSize="14sp"-->
+            <!--android:textStyle="bold" />-->
+
+        <!--<android.support.constraint.ConstraintLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:orientation="vertical"-->
+            <!--android:background="@drawable/box_rounder"-->
+            <!--&gt;-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/edit_settings_hide_age"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:text="Hide my age"-->
+                <!--android:textSize="14sp"-->
+                <!--android:textStyle="bold"-->
+                <!--app:layout_constraintBottom_toBottomOf="@+id/edit_settings_hide_age_switch"-->
+                <!--app:layout_constraintEnd_toStartOf="@+id/edit_settings_hide_age_switch"-->
+                <!--app:layout_constraintHorizontal_bias="0.0"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@+id/edit_settings_hide_age_switch" />-->
+
+            <!--<Switch-->
+                <!--android:id="@+id/edit_settings_hide_age_switch"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--app:layout_constraintBottom_toTopOf="@+id/edit_settings_hide_spacer"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintHorizontal_bias="0.95"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/edit_settings_hide_spacer"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textSize="8dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:visibility="visible"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/edit_settings_hide_distance"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:text="Hide my distance"-->
+                <!--android:textSize="14sp"-->
+                <!--android:textStyle="bold"-->
+                <!--app:layout_constraintBottom_toBottomOf="@+id/edit_settings_hide_distance_switch"-->
+                <!--app:layout_constraintEnd_toStartOf="@+id/edit_settings_hide_distance_switch"-->
+                <!--app:layout_constraintHorizontal_bias="0.0"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@+id/edit_settings_hide_distance_switch" />-->
+
+            <!--<Switch-->
+                <!--android:id="@+id/edit_settings_hide_distance_switch"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintHorizontal_bias="0.95"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/edit_settings_hide_spacer" />-->
+
+        <!--</android.support.constraint.ConstraintLayout>-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="24dp"-->
+            <!--android:layout_marginRight="24dp"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:text="Notifications"-->
+            <!--android:textSize="14sp"-->
+            <!--android:textStyle="bold" />-->
+
+        <!--<android.support.constraint.ConstraintLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:orientation="vertical"-->
+            <!--android:background="@drawable/box_rounder"-->
+            <!--&gt;-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/edit_settings_notifications"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:text="Show notifications"-->
+                <!--android:textSize="14sp"-->
+                <!--android:textStyle="bold"-->
+                <!--app:layout_constraintBottom_toBottomOf="@+id/edit_settings_hide_notifications_switch"-->
+                <!--app:layout_constraintEnd_toStartOf="@+id/edit_settings_hide_notifications_switch"-->
+                <!--app:layout_constraintHorizontal_bias="0.0"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@+id/edit_settings_hide_notifications_switch" />-->
+
+            <!--<Switch-->
+                <!--android:id="@+id/edit_settings_hide_notifications_switch"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="8dp"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintHorizontal_bias="0.95"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+
+        <!--</android.support.constraint.ConstraintLayout>-->
 
         <TextView
             android:id="@+id/edit_settings_contact_us"
@@ -265,13 +491,22 @@
 
         </android.support.constraint.ConstraintLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:text="Stay hidden from other people or places."
+            android:textSize="12sp"
+            />
+
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/box_rounder"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/edit_settings_legal"
@@ -319,6 +554,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_settings_privacy_policy" />
 
         </android.support.constraint.ConstraintLayout>
+
+        <!--<Button-->
+            <!--android:id="@+id/edit_settings_graveyard"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="16dp"-->
+            <!--android:background="@color/colorAccent"-->
+            <!--android:text="Graveyard"-->
+            <!--android:textColor="@android:color/white" />-->
 
         <Button
             android:id="@+id/edit_settings_log_out"

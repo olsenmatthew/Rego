@@ -21,8 +21,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -67,7 +71,6 @@ public class UserProfilePicture extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile_picture);
 
         // get authentication instance and create user object
         firebaseAuth = FirebaseAuth.getInstance();
@@ -84,6 +87,34 @@ public class UserProfilePicture extends AppCompatActivity implements View.OnClic
         // get firebase database reference
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
+        // listen for value of user's profile pic
+        // if profile pic exists, finish activity and go to user's main tab
+        Query query = databaseReference.child("Users").child(user.getUid()).child("OnePic");
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.exists()) {
+
+                    finish();
+                    startActivity(new Intent(UserProfilePicture.this, ActivityTabbedMain.class));
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        setContentView(R.layout.activity_user_profile_picture);
+
+        // init storage and references
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReferenceFromUrl("gs://rego-reylo.appspot.com/");
+
         // instantiate/connect ui components
         userProfilePictureActivityTextView = (TextView) findViewById(R.id.userProfilePictureActivityTextView);
         userProfilePictureButton = (ImageButton) findViewById(R.id.userProfilePictureButton);
@@ -91,13 +122,6 @@ public class UserProfilePicture extends AppCompatActivity implements View.OnClic
 
         // create new progress dialog
         progressDialog = (ProgressDialog) new ProgressDialog(UserProfilePicture.this);
-
-        // init database reference
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-
-        // init storage and references
-        firebaseStorage = FirebaseStorage.getInstance();
-        storageReference = firebaseStorage.getReferenceFromUrl("gs://rego-reylo.appspot.com/");
 
         // get image address in firebase
         imageAddressInFirebase = storageReference.child("Users").child(user.getUid())

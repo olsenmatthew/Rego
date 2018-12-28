@@ -46,7 +46,7 @@ public class UserGender extends AppCompatActivity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_gender);
+
 
         //get authentication instance and create user object
         firebaseAuth = FirebaseAuth.getInstance();
@@ -59,16 +59,6 @@ public class UserGender extends AppCompatActivity implements View.OnClickListene
             startActivity(new Intent(this, LoginActivity.class));
 
         }
-
-        // connect ui components
-        user_gender_activity_container = (FrameLayout) findViewById(R.id.user_gender_activity_container);
-        fragment_container = (FrameLayout) findViewById(R.id.fragment_container);
-        user_gender_activity_container.setVisibility(View.VISIBLE);
-        fragment_container.setVisibility(View.GONE);
-        userGenderActivityFemaleButton = (Button) findViewById(R.id.userGenderActivityFemaleButton);
-        userGenderActivityMaleButton = (Button) findViewById(R.id.userGenderActivityMaleButton);
-        userGenderMoreOptionsTextView = (TextView) findViewById(R.id.userGenderMoreOptionsTextView);
-        userGenderActivityNextArrow = (ImageView) findViewById(R.id.userGenderActivityNextArrow);
 
         //get firebase database reference
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -92,6 +82,18 @@ public class UserGender extends AppCompatActivity implements View.OnClickListene
 
             }
         });
+
+        setContentView(R.layout.activity_user_gender);
+
+        // connect ui components
+        user_gender_activity_container = (FrameLayout) findViewById(R.id.user_gender_activity_container);
+        fragment_container = (FrameLayout) findViewById(R.id.fragment_container);
+        user_gender_activity_container.setVisibility(View.VISIBLE);
+        fragment_container.setVisibility(View.GONE);
+        userGenderActivityFemaleButton = (Button) findViewById(R.id.userGenderActivityFemaleButton);
+        userGenderActivityMaleButton = (Button) findViewById(R.id.userGenderActivityMaleButton);
+        userGenderMoreOptionsTextView = (TextView) findViewById(R.id.userGenderMoreOptionsTextView);
+        userGenderActivityNextArrow = (ImageView) findViewById(R.id.userGenderActivityNextArrow);
 
         // set backgrounds for buttons
         userGenderActivityFemaleButton.setBackgroundResource(R.drawable.button_rounder);

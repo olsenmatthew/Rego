@@ -11,6 +11,7 @@ public class ChatObject {
     private String audioRecordingUrl;
     private String messageCameraContent;
     private String messageAttachmentContent;
+    private String messageAttachmentSize;
     private String contactMessageName;
     private String contactMessagePhoneNumber;
     private String contactMessageProfilePhoto;
@@ -18,10 +19,14 @@ public class ChatObject {
     public String messageVideoContent;
     public String keyMarker;
 
-    //used for all other users
-    public ChatObject(String messageText, Boolean isThisUserTheCreator, String otherUserName, String otherUserProfilePhotoUrl, String audioRecordingUrl, String messageTimestamp,
-                      String messageCameraContent, String messageAttachmentContent, String contactMessageName, String contactMessagePhoneNumber, String contactMessageProfilePhoto,
-                      String messageVideoContent, String keyMarker){
+
+    public ChatObject(String messageText, Boolean isThisUserTheCreator,
+                      String otherUserName, String otherUserProfilePhotoUrl,
+                      String audioRecordingUrl, String messageTimestamp,
+                      String messageCameraContent, String messageAttachmentContent,
+                      String messageAttachmentSize, String contactMessageName,
+                      String contactMessagePhoneNumber, String contactMessageProfilePhoto,
+                      String messageVideoContent, String keyMarker) {
 
         this.messageText = messageText;
         this.isThisUserTheCreator = isThisUserTheCreator;
@@ -30,6 +35,7 @@ public class ChatObject {
         this.audioRecordingUrl = audioRecordingUrl;
         this.messageTimestamp = messageTimestamp;
         this.messageCameraContent = messageCameraContent;
+        this.messageAttachmentSize = messageAttachmentSize;
         this.messageAttachmentContent = messageAttachmentContent;
         this.contactMessageName = contactMessageName;
         this.contactMessagePhoneNumber = contactMessagePhoneNumber;
@@ -37,6 +43,14 @@ public class ChatObject {
         this.messageVideoContent = messageVideoContent;
         this.keyMarker = keyMarker;
 
+    }
+
+    public String getMessageAttachmentSize() {
+        return messageAttachmentSize;
+    }
+
+    public void setMessageAttachmentSize(String messageAttachmentSize) {
+        this.messageAttachmentSize = messageAttachmentSize;
     }
 
     public String getMessageText() {

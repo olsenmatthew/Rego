@@ -45,6 +45,7 @@ public class ActivityTabbedMainProfile extends Fragment {
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         //Main Profile Picture
+        // Connect the image view and then crop image into circle, then get profile picture from database
         activityTabbedMainProfileCircularPicutre = rootView.findViewById(R.id.activity_tabbed_main_profile_circular_picture);
         Glide.clear(activityTabbedMainProfileCircularPicutre);
         FirebaseDatabase.getInstance().getReference().child("Users").child(user.getUid()).child("OnePic").child("OnePic").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -72,7 +73,7 @@ public class ActivityTabbedMainProfile extends Fragment {
             }
         });
 
-        //Name TextView
+        //Connect text view for name, then set name with name from database
         activityTabbedMainProfileNameTextView = (TextView) rootView.findViewById(R.id.activity_tabbed_main_profile_name_text_view);
         FirebaseDatabase.getInstance().getReference().child("Users").child(user.getUid()).child("First Name").child("firstName").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -93,6 +94,7 @@ public class ActivityTabbedMainProfile extends Fragment {
         });
 
 
+        // on settings button clicked, go to edit settings activity
         activityTabbedMainProfileSettingsIcon = (ImageView) rootView.findViewById(R.id.activity_tabbed_main_profile_settings_button);
         activityTabbedMainProfileSettingsIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +107,7 @@ public class ActivityTabbedMainProfile extends Fragment {
             }
         });
 
+        // on edit icon clicked, go to edit info activity
         getActivityTabbedMainProfileEditIcon = (ImageView) rootView.findViewById(R.id.activity_tabbed_main_profile_edit_button);
         getActivityTabbedMainProfileEditIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +124,7 @@ public class ActivityTabbedMainProfile extends Fragment {
 
     }
 
+    // used to transform image into a circular format
     public static class CircleTransform extends BitmapTransformation {
         public CircleTransform(Context context) {
             super(context);

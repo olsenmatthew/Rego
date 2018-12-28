@@ -27,22 +27,29 @@ import java.util.List;
 
 public class ActivityTabbedMainMatches extends Fragment {
 
-    //declaring views
+    //declaring ui components
     private Button peopleButton;
     private Button interestsButton;
     private TextView profileRecyclerTextView;
     private SearchView connectionsSearchView;
 
+    // declare messages recycler views
     private RecyclerView messagesRecyclerView;
     private RecyclerView.LayoutManager messagesLayoutManager;
     private RecyclerView.Adapter messagesAdapter;
 
+    // declare profile recycler views
     private RecyclerView profileRecyclerView;
     private RecyclerView.Adapter profileAdapter;
     private RecyclerView.LayoutManager profileLayoutManager;
 
+    // declare firebase objects
     private FirebaseAuth mAuth;
+
+    // declare string to hold uid
     private String thisUserID;
+
+    // declare database references
     private DatabaseReference usersDb;
 
     private MatchesObject matchesObject;
@@ -65,6 +72,7 @@ public class ActivityTabbedMainMatches extends Fragment {
         connectionsSearchView = (SearchView) rootView.findViewById(R.id.activity_tabbed_main_matches_search_view);
         profileRecyclerTextView = (TextView) rootView.findViewById(R.id.activity_tabbed_main_matches_profile_recycler_text_view);
 
+        // connect and set message recycler view components
         messagesRecyclerView = (RecyclerView) rootView.findViewById(R.id.activity_tabbed_main_matches_messages_recycler);
         messagesRecyclerView.setNestedScrollingEnabled(false);
         messagesRecyclerView.setHasFixedSize(true);
@@ -73,6 +81,7 @@ public class ActivityTabbedMainMatches extends Fragment {
         messagesAdapter = new MatchesMessagesAdapter(getDataSetMessages(), getContext());
         messagesRecyclerView.setAdapter(messagesAdapter);
 
+        // connect and set profile picture matches view components
         profileRecyclerView = (RecyclerView) rootView.findViewById(R.id.activity_tabbed_main_matches_profile_recycler);
         profileRecyclerView.setNestedScrollingEnabled(false);
         profileRecyclerView.setHasFixedSize(true);
@@ -85,6 +94,7 @@ public class ActivityTabbedMainMatches extends Fragment {
         return rootView;
     }
 
+    // get uid of matched/connected user
     private void getConnectedUserId() {
 
         DatabaseReference connectedDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(thisUserID)
@@ -107,6 +117,9 @@ public class ActivityTabbedMainMatches extends Fragment {
 
     }
 
+    // get all connections from database
+    // make sure that each connection is a user with valid data
+    // then add items to recycler view if valid
     private void RetrieveConnectionInfo(String key) {
 
         DatabaseReference otherUserDB = FirebaseDatabase.getInstance().getReference().child("Users").child(key);
@@ -175,6 +188,7 @@ public class ActivityTabbedMainMatches extends Fragment {
 
     }
 
+    // clear messages and profiles on resume in case they have been updated
     @Override
     public void onResume() {
 
@@ -194,6 +208,7 @@ public class ActivityTabbedMainMatches extends Fragment {
 
     }
 
+    // clear messages and profiles on cases where is visible to the user in case they have been updated
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
 
@@ -213,9 +228,5 @@ public class ActivityTabbedMainMatches extends Fragment {
         }
 
     }
-
-
-
-
 
 }

@@ -262,11 +262,8 @@ public class ActivityTabbedMainFeed extends Fragment {
                             FirebaseDatabase.getInstance().getReference().child("Users").child(dataSnapshot.getKey()).child("CrossedPaths").child(user.getUid()).setValue(true);
                             FirebaseDatabase.getInstance().getReference().child("Users").child(user.getUid()).child("CrossedPaths").child(dataSnapshot.getKey()).setValue(true);
 
-                        } else if (trueCP.equals("false")) {
-
-                            //TODO: ADD FUNCTIONALITY IF THIS IS EQUAL TO FALSE
-
                         }
+
                         loadCards();
 
                     }

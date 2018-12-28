@@ -1,7 +1,6 @@
 package com.reylo.rego.Main.Matches;
 
-
-
+// each match needs a uid, first name and profile picture
 public class MatchesObject {
 
     private String userId;

@@ -35,7 +35,6 @@ public class UserFirstName extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_first_name);
 
         //get authentication instance and create user object
         firebaseAuth = FirebaseAuth.getInstance();
@@ -48,10 +47,6 @@ public class UserFirstName extends AppCompatActivity implements View.OnClickList
             startActivity(new Intent(this, LoginActivity.class));
 
         }
-
-        // connect ui components to corresponding components on activity's layout
-        userFirstNameActivityEditText = (EditText) findViewById(R.id.userFirstNameActivityEditText);
-        userFirstNameActivityNextArrow = (ImageView) findViewById(R.id.userFirstNameActivityNextArrow);
 
         // init db reference
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -77,6 +72,12 @@ public class UserFirstName extends AppCompatActivity implements View.OnClickList
 
             }
         });
+
+        setContentView(R.layout.activity_user_first_name);
+
+        // connect ui components to corresponding components on activity's layout
+        userFirstNameActivityEditText = (EditText) findViewById(R.id.userFirstNameActivityEditText);
+        userFirstNameActivityNextArrow = (ImageView) findViewById(R.id.userFirstNameActivityNextArrow);
 
         // listen for clicks on next arrow
         userFirstNameActivityNextArrow.setOnClickListener(this);

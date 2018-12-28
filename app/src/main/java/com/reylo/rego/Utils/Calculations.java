@@ -1,5 +1,8 @@
 package com.reylo.rego.Utils;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import java.util.Calendar;
 
 // Contains functions which perform calculations

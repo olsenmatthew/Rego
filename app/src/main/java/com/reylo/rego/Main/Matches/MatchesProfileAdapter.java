@@ -29,6 +29,7 @@ public class MatchesProfileAdapter extends RecyclerView.Adapter<MatchesProfileVi
         this.context = context;
     }
 
+    // update item view with profile pictures of matches
     @Override
     public MatchesProfileViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -54,6 +55,7 @@ public class MatchesProfileAdapter extends RecyclerView.Adapter<MatchesProfileVi
         holder.mGoneProfilePhotoUrl.setText(matchesList.get(position).getprofilePicURL());
 
     }
+
 
     public static class CircleTransform extends BitmapTransformation {
         public CircleTransform(Context context) {
@@ -93,6 +95,7 @@ public class MatchesProfileAdapter extends RecyclerView.Adapter<MatchesProfileVi
         }
     }
 
+    // returns number of profile picture objects
     @Override
     public int getItemCount() {
         return this.matchesList.size();
@@ -103,11 +106,14 @@ public class MatchesProfileAdapter extends RecyclerView.Adapter<MatchesProfileVi
         return position;
     }
 
+    // keep items from changing position
+    // no need to bind items again
     @Override
     public void setHasStableIds(boolean hasStableIds) {
         setHasStableIds(true);
     }
 
+    // return position of item
     @Override
     public long getItemId(int position) {
         return position;
