@@ -14,6 +14,3 @@ How does it work?
 Downloading and using the app is FREE!
 
 Download Here: https://play.google.com/store/apps/details?id=com.reylo.rego
-
-Demo Here: https://www.youtube.com/watch?v=hCBwo1rfpMA
-
